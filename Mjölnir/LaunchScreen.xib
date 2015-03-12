@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="487"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="mjolnir_logo_full" translatesAutoresizingMaskIntoConstraints="NO" id="UiD-6Q-IUf">
+                    <rect key="frame" x="0.0" y="20" width="480" height="259.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="239" id="5YK-PJ-O4j"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="5YK-PJ-O4j"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ5-x8-BIj">
+                    <rect key="frame" x="0.0" y="287.5" width="480" height="199.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="SQ5-x8-BIj" firstAttribute="leading" secondItem="UiD-6Q-IUf" secondAttribute="leading" id="9Ji-oN-2hS"/>
+                <constraint firstItem="UiD-6Q-IUf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="IKk-jE-Ay5"/>
+                <constraint firstAttribute="bottom" secondItem="SQ5-x8-BIj" secondAttribute="bottom" id="K3z-Fl-peA"/>
+                <constraint firstItem="UiD-6Q-IUf" firstAttribute="height" secondItem="SQ5-x8-BIj" secondAttribute="height" multiplier="1.3" id="cT7-2d-fgj"/>
+                <constraint firstItem="SQ5-x8-BIj" firstAttribute="top" secondItem="UiD-6Q-IUf" secondAttribute="bottom" constant="8" symbolic="YES" id="fgX-dj-418"/>
+                <constraint firstItem="SQ5-x8-BIj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i4k-HT-0hy"/>
+                <constraint firstItem="SQ5-x8-BIj" firstAttribute="trailing" secondItem="UiD-6Q-IUf" secondAttribute="trailing" id="su5-06-A3p"/>
+                <constraint firstAttribute="trailing" secondItem="SQ5-x8-BIj" secondAttribute="trailing" id="zCa-iz-rMM"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="688" y="454.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mjolnir_logo_full" width="977" height="975"/>
+    </resources>
+</document>
