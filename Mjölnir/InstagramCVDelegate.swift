@@ -8,6 +8,6 @@
 
 import UIKit
 
-class instagramCVDelegate: NSObject, UICollectionViewDelegate
+class InstagramCVDelegate: NSObject, UICollectionViewDelegate
 {
 }

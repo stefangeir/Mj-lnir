@@ -8,7 +8,7 @@
 
 import UIKit
 
-class instagramMediaCommentCVCell: UICollectionViewCell {
+class InstagramMediaCVCommentCell: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
     
     var comment: InstagramComment? {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class instagramCVCell: UICollectionViewCell {
+class InstagramCVCell: UICollectionViewCell {
     
     @IBOutlet weak var videoIcon: UILabel!
     @IBOutlet weak var imageView: UIImageView!

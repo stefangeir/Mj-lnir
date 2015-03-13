@@ -8,7 +8,7 @@
 
 import UIKit
 
-class facebookLoadingTVCell: UITableViewCell {
+class FacebookLoadingTVCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
     

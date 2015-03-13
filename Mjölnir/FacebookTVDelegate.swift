@@ -8,10 +8,10 @@
 
 import UIKit
 
-class facebookTVDelegate: NSObject, UITableViewDelegate
+class FacebookTVDelegate: NSObject, UITableViewDelegate
 {
     
-    weak var controller: facebookTVC?
+    weak var controller: FacebookTVC?
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

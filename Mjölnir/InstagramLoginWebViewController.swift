@@ -9,7 +9,7 @@
 import UIKit
 
 
-class loginWebViewController: UIViewController, UIWebViewDelegate
+class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
 {
     @IBOutlet weak var webView: UIWebView!
 
@@ -17,7 +17,7 @@ class loginWebViewController: UIViewController, UIWebViewDelegate
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    var collectionVC: instagramCVC?
+    var collectionVC: InstagramCVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()

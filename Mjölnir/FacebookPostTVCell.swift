@@ -8,7 +8,7 @@
 
 import UIKit
 
-class facebookPostTVCell: UITableViewCell
+class FacebookPostTVCell: UITableViewCell
 {
     
     @IBOutlet var fbPostLabel: UILabel!

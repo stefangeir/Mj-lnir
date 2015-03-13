@@ -8,7 +8,7 @@
 
 import UIKit
 
-class instagramCVLoadingCell: UICollectionViewCell {
+class InstagramCVLoadingCell: UICollectionViewCell {
     
     @IBOutlet weak var label: UILabel!
     

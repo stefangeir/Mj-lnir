@@ -17,11 +17,11 @@ struct fbPost {
     var id: String?
 }
 
-class facebookTVDatasource: NSObject, UITableViewDataSource
+class FacebookTVDatasource: NSObject, UITableViewDataSource
 {
     var posts = [JSON]()
     var paginationNext: String?
-    weak var controller: facebookTVC?
+    weak var controller: FacebookTVC?
     var retryCount = 0
     
     func reset() {
@@ -144,14 +144,14 @@ class facebookTVDatasource: NSObject, UITableViewDataSource
         
 
         if indexPath.row < fbPosts.count {
-            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.PostCellIdentifier, forIndexPath: indexPath) as facebookPostTVCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.PostCellIdentifier, forIndexPath: indexPath) as FacebookPostTVCell
             cell.post = fbPosts[indexPath.row]
             
             return cell
             
         } else {
             
-            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.LoadingCellIdentifier) as facebookLoadingTVCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.LoadingCellIdentifier) as FacebookLoadingTVCell
             
             cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width, 0, 0)
             cell.backgroundColor = UIColor.blackColor()

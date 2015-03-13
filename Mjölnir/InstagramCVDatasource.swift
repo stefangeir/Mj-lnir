@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class instagramCVDatasource: NSObject, UICollectionViewDataSource
+class InstagramCVDatasource: NSObject, UICollectionViewDataSource
 {
     var mediaArray: [InstagramMedia] = [InstagramMedia]() {
         didSet {
@@ -20,7 +20,7 @@ class instagramCVDatasource: NSObject, UICollectionViewDataSource
         }
     }
     var currentPaginationInfo = InstagramPaginationInfo()
-    weak var controller: instagramCVC?
+    weak var controller: InstagramCVC?
     var loadMjolnir = true
     var firstFetchDone = false
     var userIsLoggedIn: Bool = true {
@@ -154,12 +154,12 @@ class instagramCVDatasource: NSObject, UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         if indexPath.row < mediaArray.count {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.InstagramImageCellReuseIdentifier, forIndexPath: indexPath) as instagramCVCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.InstagramImageCellReuseIdentifier, forIndexPath: indexPath) as InstagramCVCell
             
             cell.media = mediaArray[indexPath.row]
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.LoadingCellReuseIdentifier, forIndexPath: indexPath) as instagramCVLoadingCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.LoadingCellReuseIdentifier, forIndexPath: indexPath) as InstagramCVLoadingCell
             
             cell.backgroundColor = UIColor.clearColor()
             cell.label.textColor = UIColor.whiteColor()

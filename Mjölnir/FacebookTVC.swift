@@ -10,10 +10,10 @@ import UIKit
 
 let openInFacebookAppUserDefaultsString = "MjolnirOpenFacebookPostsInFacebookApp"
 
-class facebookTVC: UITableViewController, FBLoginViewDelegate {
+class FacebookTVC: UITableViewController, FBLoginViewDelegate {
     
-    let datasource = facebookTVDatasource()
-    let delegate = facebookTVDelegate()
+    let datasource = FacebookTVDatasource()
+    let delegate = FacebookTVDelegate()
     let myLoginView = FBLoginView()
     
     var openLinksInFacebookApp: Bool {
@@ -179,7 +179,7 @@ class facebookTVC: UITableViewController, FBLoginViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == viewStoryInWebViewSegueString {
             if let webVC = segue.destinationViewController as? FacebookWebViewController {
-                if let cell = sender as? facebookPostTVCell {
+                if let cell = sender as? FacebookPostTVCell {
                     if let row = tableView.indexPathForCell(cell)?.row {
                         webVC.urlString = datasource.getItemLinkInRow(row)
                         webVC.openInAppURL = NSURL(string: "fb://story?id=" + datasource.getIdInRow(row))!

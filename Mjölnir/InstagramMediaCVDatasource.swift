@@ -10,7 +10,7 @@ import UIKit
 
 class instagramMediaCVDatasource: NSObject, UICollectionViewDataSource
 {
-    weak var controller: instagramMediaCVC?
+    weak var controller: InstagramMediaCVC?
     var media = InstagramMedia()
     
     let imageReuseIdentifier = "reusable.instagramMediaImageCell"
@@ -73,7 +73,7 @@ class instagramMediaCVDatasource: NSObject, UICollectionViewDataSource
             // captions
             
         else if indexPath.section == 3 && media.caption.text != nil {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as instagramMediaCommentCVCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVCommentCell
             
             cell.isCaption = true
             cell.comment = media.caption
@@ -82,7 +82,7 @@ class instagramMediaCVDatasource: NSObject, UICollectionViewDataSource
         } else {
             //} else {
             // comments
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as instagramMediaCommentCVCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVCommentCell
             
             var row = indexPath.section - 3 // -3 because of date, image, likes
             if media.caption.text != nil {

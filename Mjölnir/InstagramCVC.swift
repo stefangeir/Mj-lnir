@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class instagramCVC: UICollectionViewController {
+class InstagramCVC: UICollectionViewController {
 
     let loginSegueString = "segue.login"
     let showMediaSegueString = "segue.showMedia"
@@ -31,15 +31,15 @@ class instagramCVC: UICollectionViewController {
     
     var loadMjolnir: Bool = true {
         willSet {
-            datasource = instagramCVDatasource()
+            datasource = InstagramCVDatasource()
             datasource.loadMjolnir = newValue
             datasource.controller = self
             collectionView?.dataSource = datasource
         }
     }
     var youMustLoginView = UILabel()
-    var datasource = instagramCVDatasource()
-    var delegate = instagramCVDelegate()
+    var datasource = InstagramCVDatasource()
+    var delegate = InstagramCVDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,7 @@ class instagramCVC: UICollectionViewController {
     }
     
     func refresh() {
-        datasource = instagramCVDatasource()
+        datasource = InstagramCVDatasource()
         datasource.loadMjolnir = loadMjolnir
         datasource.controller = self
         collectionView?.dataSource = datasource
@@ -117,15 +117,15 @@ class instagramCVC: UICollectionViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == loginSegueString {
             if let nav = segue.destinationViewController as? UINavigationController {
-                if let webVC = nav.viewControllers.first as? loginWebViewController {
+                if let webVC = nav.viewControllers.first as? InstagramLoginWebViewController {
                     webVC.collectionVC = self
                 }
             }
         }
         
         if segue.identifier == showMediaSegueString {
-            if let instagramMedia = segue.destinationViewController as? instagramMediaCVC {
-                if let cell = sender as? instagramCVCell {
+            if let instagramMedia = segue.destinationViewController as? InstagramMediaCVC {
+                if let cell = sender as? InstagramCVCell {
                     let indexPath = collectionView!.indexPathForCell(cell)
                     instagramMedia.media = datasource.mediaArray[indexPath!.row]
                     navigationController?.navigationBarHidden = false

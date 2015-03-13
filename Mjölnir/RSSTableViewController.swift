@@ -60,7 +60,7 @@ class RSSTableViewController: UITableViewController, MWFeedParserDelegate {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == viewNewsItemSegueString {
 			if let cell = sender as? UITableViewCell {
-				if let web = segue.destinationViewController as? WebViewController {
+				if let web = segue.destinationViewController as? RSSWebViewController {
 					let row = tableView.indexPathForCell(cell)?.row
 					web.urlString = datasource.getItemLinkInRow(row!)
 					web.title = datasource.getItemTitleInRow(row!)

@@ -22,7 +22,7 @@ struct InstagramFontsAndAttributes {
     static let LikesAttributes = InstagramFontsAndAttributes.UsernameAttributes
 }
 
-class instagramMediaCVC: UICollectionViewController {
+class InstagramMediaCVC: UICollectionViewController {
     
     @IBAction func viewInAppButton(sender: UIBarButtonItem) {
         

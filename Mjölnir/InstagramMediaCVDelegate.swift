@@ -10,7 +10,7 @@ import UIKit
 
 class instagramMediaCVDelegate: NSObject, UICollectionViewDelegate
 {
-    weak var controller: instagramMediaCVC?
+    weak var controller: InstagramMediaCVC?
     var media = InstagramMedia()
     let padding: CGFloat = 10
     

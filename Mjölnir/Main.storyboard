@@ -141,7 +141,7 @@
         <!--Web View Controller-->
         <scene sceneID="OKq-dT-oYA">
             <objects>
-                <viewController storyboardIdentifier="webView" id="acU-pA-D4o" customClass="WebViewController" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="webView" id="acU-pA-D4o" customClass="RSSWebViewController" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3oB-Tw-vlP"/>
                         <viewControllerLayoutGuide type="bottom" id="1Vk-UW-w0W"/>
@@ -201,7 +201,7 @@
         <!--InstagramCVC-->
         <scene sceneID="EHS-kn-wFw">
             <objects>
-                <collectionViewController id="j8D-pp-z4n" customClass="instagramCVC" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="j8D-pp-z4n" customClass="InstagramCVC" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="9x7-a2-WyE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -213,7 +213,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reusable.instagramCVLoadingCell" id="hg0-Wy-Xrj" customClass="instagramCVLoadingCell" customModule="Mjo_lnir" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reusable.instagramCVLoadingCell" id="hg0-Wy-Xrj" customClass="InstagramCVLoadingCell" customModule="Mjo_lnir" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -247,7 +247,7 @@
                                     <outlet property="label" destination="hjG-xb-VzI" id="8vH-i2-Xhb"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reusable.instagramImageCell" id="g8Z-1n-g80" customClass="instagramCVCell" customModule="Mjo_lnir" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reusable.instagramImageCell" id="g8Z-1n-g80" customClass="InstagramCVCell" customModule="Mjo_lnir" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -391,7 +391,7 @@
         <!--Instagram MediaCVC-->
         <scene sceneID="3me-TM-scG">
             <objects>
-                <collectionViewController id="qKL-bv-rU8" customClass="instagramMediaCVC" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="qKL-bv-rU8" customClass="InstagramMediaCVC" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="U0V-mO-YM8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -533,7 +533,7 @@
                                     <outlet property="likesLabel" destination="6DS-cN-Zg3" id="5MH-tI-UHv"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reusable.commentCell" id="r1g-dq-Rx6" customClass="instagramMediaCommentCVCell" customModule="Mjo_lnir" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reusable.commentCell" id="r1g-dq-Rx6" customClass="InstagramMediaCVCommentCell" customModule="Mjo_lnir" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -655,10 +655,10 @@
             </objects>
             <point key="canvasLocation" x="2933" y="1200"/>
         </scene>
-        <!--Login Web View Controller-->
+        <!--Instagram Login Web View Controller-->
         <scene sceneID="Tce-ai-dO0">
             <objects>
-                <viewController id="thQ-NM-yzI" customClass="loginWebViewController" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="thQ-NM-yzI" customClass="InstagramLoginWebViewController" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yOs-2v-oqu"/>
                         <viewControllerLayoutGuide type="bottom" id="Yo4-CZ-y5T"/>
@@ -892,14 +892,14 @@
         <!--Facebook-->
         <scene sceneID="DnC-AZ-cMa">
             <objects>
-                <tableViewController title="Facebook" id="NQQ-u4-ofF" customClass="facebookTVC" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Facebook" id="NQQ-u4-ofF" customClass="FacebookTVC" customModule="Mjo_lnir" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="q9z-YO-o63">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="reusable.facebookCell" rowHeight="120" id="mQI-NO-FQm" customClass="facebookPostTVCell" customModule="Mjo_lnir" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="reusable.facebookCell" rowHeight="120" id="mQI-NO-FQm" customClass="FacebookPostTVCell" customModule="Mjo_lnir" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mQI-NO-FQm" id="Sfh-fa-dzO">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1049,7 +1049,7 @@
                                     <outlet property="fbPostTimeLabel" destination="OqH-Lk-hlN" id="P42-hG-y0Z"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusable.facebookLoadingCell" rowHeight="40" id="9qP-tt-jHU" customClass="facebookLoadingTVCell" customModule="Mjo_lnir" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusable.facebookLoadingCell" rowHeight="40" id="9qP-tt-jHU" customClass="FacebookLoadingTVCell" customModule="Mjo_lnir" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9qP-tt-jHU" id="E3P-LW-sXt">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1223,7 +1223,7 @@
         <scene sceneID="Zcl-Vm-bHB">
             <objects>
                 <navigationController title="Mjölnir á facebook" automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="oB7-pE-Obv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="facebook" image="facebookTabbaricon" id="OKc-fF-QmT"/>
+                    <tabBarItem key="tabBarItem" title="Facebook" image="facebookTabbaricon" id="OKc-fF-QmT"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" barStyle="black" id="rY7-QR-ilx">
