@@ -691,7 +691,7 @@
                     <navigationItem key="navigationItem" id="Djt-6p-q7W">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="rm9-E4-nVv">
                             <connections>
-                                <action selector="back:" destination="thQ-NM-yzI" id="RtX-nG-wCl"/>
+                                <segue destination="isj-cO-1yH" kind="unwind" identifier="segue.userLoggedInToInstagram" unwindAction="userLoggedIn:" id="xjY-Nk-rV0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -700,8 +700,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqf-MO-AWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="isj-cO-1yH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4557" y="363"/>
+            <point key="canvasLocation" x="4573" y="355"/>
         </scene>
         <!--Timetable-->
         <scene sceneID="fAy-xn-vpc">
@@ -861,12 +862,13 @@
                     <navigationItem key="navigationItem" id="yLC-q0-hww">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="FPt-QL-Kk8">
                             <connections>
-                                <action selector="dismiss:" destination="KCf-9M-lcv" id="0Ht-Te-ABQ"/>
+                                <segue destination="N64-tS-HZF" kind="unwind" identifier="segue.updatedShownClasses" unwindAction="changedShownClasses:" id="pUA-LU-taX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8O-Gb-dlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="N64-tS-HZF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2761" y="2347"/>
         </scene>

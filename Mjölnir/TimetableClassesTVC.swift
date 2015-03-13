@@ -39,11 +39,15 @@ class TimetableClassesTVC: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == shownClassesSegueString {
             if let navVC = segue.destinationViewController as? UINavigationController {
-                if let shownClasses = navVC.viewControllers[0] as? ShownClassesTVC {
+                if let shownClasses = navVC.viewControllers.first as? ShownClassesTVC {
                     shownClasses.timetableDatasource = datasource
                 }
             }
         }
+    }
+    
+    @IBAction func changedShownClasses(segue: UIStoryboardSegue) {
+        datasource.updateModel()
     }
     
 }

@@ -12,20 +12,9 @@ let keyForShownClassesDictionaryString = "MjolnirShownClasses"
 class ShownClassesTVC: UITableViewController {
 
     let shownClassesCellIdentifier = "reusable.shownClasses"
-    
+    let unwindSegueString = "segue.updatedShownClasses"
     weak var timetableDatasource: TimetableClassesDatasource?
     
-    @IBAction func dismiss(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true) { () -> Void in
-            NSUserDefaults.standardUserDefaults().setObject(self.updatedShownClasses!, forKey: keyForShownClassesDictionaryString)
-            NSUserDefaults.standardUserDefaults().synchronize()
-            
-            if let datasource = self.timetableDatasource {
-                datasource.updateModel()
-            }
-        }
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +33,6 @@ class ShownClassesTVC: UITableViewController {
                 dict.updateValue(true, forKey: singleClass)
             }
             updatedShownClasses = dict
-//            NSUserDefaults.standardUserDefaults().setObject(dict, forKey: "MjolnirShownClasses")
-//            NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
 
@@ -95,6 +82,17 @@ class ShownClassesTVC: UITableViewController {
                     cell.accessoryType = .Checkmark
                     updatedShownClasses!.updateValue(true, forKey: classname)
                 }
+            }
+        }
+    }
+    
+    //MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == unwindSegueString {
+            if let updatedShownClasses = updatedShownClasses {
+                NSUserDefaults.standardUserDefaults().setObject(updatedShownClasses, forKey: keyForShownClassesDictionaryString)
+                NSUserDefaults.standardUserDefaults().synchronize()
             }
         }
     }

@@ -114,15 +114,11 @@ class InstagramCVC: UICollectionViewController {
         datasource.loadMedia()
     }
     
+    @IBAction func userLoggedIn(segue: UIStoryboardSegue) {
+        updateData()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == loginSegueString {
-            if let nav = segue.destinationViewController as? UINavigationController {
-                if let webVC = nav.viewControllers.first as? InstagramLoginWebViewController {
-                    webVC.collectionVC = self
-                }
-            }
-        }
-        
         if segue.identifier == showMediaSegueString {
             if let instagramMedia = segue.destinationViewController as? InstagramMediaCVC {
                 if let cell = sender as? InstagramCVCell {
