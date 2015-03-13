@@ -58,9 +58,6 @@ class TimetableClassesDatasource: NSObject, UITableViewDataSource
         if let timeString = timesForRoom[roomNumber]?[classNumber] {
             cell.textLabel?.text = timeString
             cell.detailTextLabel?.text = classesForRoom[roomNumber]?[timeString]
-//            cell.textLabel?.textColor = UIColor.whiteColor()
-//            cell.detailTextLabel?.textColor = UIColor.whiteColor()
-//            cell.backgroundColor = UIColor.clearColor()
         }
 		return cell
 }

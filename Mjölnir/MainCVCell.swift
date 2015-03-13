@@ -27,16 +27,6 @@ class MainCVCell: UICollectionViewCell {
             layer.borderColor = UIColor.redColor().CGColor
             layer.borderWidth = 1
             backgroundColor = UIColor.clearColor()
-            
-            // Blur and vibrancy effects
-//            var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-//            var blurEffectView = UIVisualEffectView(effect: blurEffect)
-//            var vibrancyEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
-//            var vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
-//            blurEffectView.contentView.addSubview(vibrancyEffectView)
-//            backgroundView = blurEffectView
-//            blurEffectView.frame = backgroundView!.bounds
-//            vibrancyEffectView.frame = backgroundView!.bounds
         }
     }
     

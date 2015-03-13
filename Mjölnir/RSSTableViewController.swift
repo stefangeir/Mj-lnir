@@ -17,20 +17,6 @@ class RSSTableViewController: UITableViewController, MWFeedParserDelegate {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Background
-//        let imageView = UIImageView(image: UIImage(named: backgroundImageString))
-//        imageView.contentMode = UIViewContentMode.ScaleAspectFill
-//        imageView.frame = UIScreen.mainScreen().bounds
-//        var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-//        var blurEffectView = UIVisualEffectView(effect: blurEffect) as UIVisualEffectView
-//        blurEffectView.frame = imageView.frame
-//        imageView.addSubview(blurEffectView)
-//        tableView.backgroundView = imageView
-        //self.refreshControl?.layer.zPosition = self.tableView.backgroundView!.layer.zPosition + 1
-        
-        //tableView.estimatedRowHeight = tableView.rowHeight
-        // tableView.rowHeight = UITableViewAutomaticDimension
         datasource.controller = self
 		tableView.dataSource = datasource
         tableView.delegate = delegate

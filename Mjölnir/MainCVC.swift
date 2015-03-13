@@ -10,16 +10,8 @@ import UIKit
 
 
 let formatter = NSDateFormatter()
-//let backgroundImageString = "background"
-//let newsSegueString: String = "segue.news"
 let timetableSegueString: String = "segue.timetable"
-//let instagramButtonString: String = "@mjolnirmma"
-//let instagramSegueString: String = "segue.instagram"
-//let newsButtonString: String = "Fréttir"
 let todayString: String = "í dag"
-//let instagramHashtagButtonString: String = "#mjolnirmma"
-//let facebookButtonString: String =  "Facebook"
-//let facebookSegueString: String = "segue.facebook"
 let placeholderImageNameString = "placeholder"
 
 struct WeekdaySelectSectionNumbers {
@@ -106,24 +98,6 @@ class MainCVC: UICollectionViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-//    
-//    func buttonTouchedNotification(notification: NSNotification) {
-//        let cell = notification.object as MainCVCell
-//        let cellText = cell.buttonLabel.text! as String
-//        
-//        switch cellText {
-//        case instagramButtonString:
-//             performSegueWithIdentifier(instagramSegueString, sender: cell)
-//        case instagramHashtagButtonString:
-//            performSegueWithIdentifier(instagramSegueString, sender: cell)
-//        case facebookButtonString:
-//            performSegueWithIdentifier(facebookSegueString, sender: self)
-//        case newsButtonString:
-//            performSegueWithIdentifier(newsSegueString , sender: self)
-//        default:
-//            performSegueWithIdentifier(timetableSegueString, sender: cell)
-//        }
-//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -162,22 +136,5 @@ class MainCVC: UICollectionViewController {
                 
             }
         }
-//        if segue.identifier == instagramSegueString {
-//            if let cell = sender as? MainCVCell {
-//                if let indexPath = collectionView?.indexPathForCell(cell) {
-//                    if let instagramVC = segue.destinationViewController as? instagramCVC {
-//                        
-//                        if cell.buttonLabel.text == instagramButtonString {
-//                            instagramVC.loadMjolnir = true
-//                            instagramVC.title = "@mjolnirmma á Instagram"
-//                        } else {
-//                            instagramVC.loadMjolnir = false
-//                            instagramVC.title = "#mjolnirmma á Instagram"
-//                        }
-//                        
-//                    }
-//                }
-//            }
-//        }
     }
 }
