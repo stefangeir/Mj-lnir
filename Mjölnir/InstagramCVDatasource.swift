@@ -19,6 +19,7 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
             }
         }
     }
+    
     var currentPaginationInfo = InstagramPaginationInfo()
     weak var controller: InstagramCVC?
     var loadMjolnir = true
@@ -35,7 +36,7 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
     
     
     func fetchPaginatedMedia() {
-        InstagramEngine.sharedEngine().getPaginatedItemsForInfo(currentPaginationInfo, withSuccess: { media, pagination in
+        InstagramEngine.sharedEngine().getPaginatedItemsForInfo(currentPaginationInfo, withSuccess: {[unowned self] media, pagination in
 
             self.mediaArray += media as [InstagramMedia]
             if pagination != nil {
@@ -44,14 +45,13 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
                 self.reachedEndOfFeed = true
             }
             
-        }) { (error) -> Void in
+        }) {[unowned self] (error) -> Void in
 
             let alertController = UIAlertController(title: "Error: ", message:
                 error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Flott", style: UIAlertActionStyle.Default,handler: nil))
             
             self.controller!.presentViewController(alertController, animated: true, completion: nil)
-            println("error í pagination")
         }
     }
     
@@ -65,20 +65,17 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
             if let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("MjolnirInstagramAccessToken") as? String {
                 sharedEngine.accessToken = accessToken
             }
-            println("Reyni að sækja instagrammedia...")
            
             if sharedEngine.accessToken != nil {
                 if loadMjolnir {
                     sharedEngine.getMediaForUser("324433330",
                         count: 21,
                         maxId: currentPaginationInfo.nextMaxId,
-                        withSuccess: { feed, paginationInfo in
+                        withSuccess: { [unowned self] feed, paginationInfo in
 
                             //TODO: Nota error codes og það úr instagramkit til að determina þetta drasl
                             self.userIsLoggedIn = true
                             self.mediaArray += feed as [InstagramMedia]
-                            
-                            println("sótti instagram media")
                             
                             if (paginationInfo != nil) {
                                 self.currentPaginationInfo = paginationInfo
@@ -89,7 +86,6 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
                         },
                         failure: { error in
 
-                            println("gat ekki sótt instagram media fyrir @mjolnirmma")
                             //TODO: Display the error, only set false if user is not authenticated
                             self.userIsLoggedIn = false
                             let alertController = UIAlertController(title: "Error: ", message:
@@ -103,14 +99,11 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
                     sharedEngine.getMediaWithTagName("mjolnirmma",
                         count: 21,
                         maxId: currentPaginationInfo.nextMaxId,
-                        withSuccess: { feed, paginationInfo in
+                        withSuccess: { [unowned self] feed, paginationInfo in
                             
-
                             self.userIsLoggedIn = true
                             
                             self.mediaArray += feed as [InstagramMedia]
-                            
-                            println("sótti instagram media fyrir #mjolnirmma")
                             
                             if (paginationInfo != nil) {
                                 self.currentPaginationInfo = paginationInfo
@@ -121,7 +114,7 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
                         },
                         failure: { error in
 
-                            println("gat ekki sótt instagram media fyrir @mjolnirmma")
+
                             //TODO: Display the error, only set false if user is not authenticated
                             self.userIsLoggedIn = false
                             let alertController = UIAlertController(title: "Error: ", message:

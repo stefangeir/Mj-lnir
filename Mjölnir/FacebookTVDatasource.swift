@@ -32,7 +32,7 @@ class FacebookTVDatasource: NSObject, UITableViewDataSource
     }
     
     func getData() {
-        println("Reyni að sækja facebook gögn..")
+
         var requestPath = String()
         
         if paginationNext == nil {
@@ -45,8 +45,7 @@ class FacebookTVDatasource: NSObject, UITableViewDataSource
         FBRequestConnection.startWithGraphPath(requestPath,
             parameters: nil,
             HTTPMethod: "GET",
-            completionHandler:{ response, data, error in
-                println("Sótti facebook gögn")
+            completionHandler:{ [unowned self] response, data, error in
                 if error == nil {
                     self.retryCount = 0
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false

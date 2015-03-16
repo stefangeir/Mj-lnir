@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
 {
     let userLoggedInSegueString = "segue.userLoggedInToInstagram"
@@ -17,11 +16,8 @@ class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.delegate = self
-        
         let sharedEngine = InstagramEngine.sharedEngine()
-        
         let configuration = InstagramEngine.sharedEngineConfiguration()
-        println("\(sharedEngine.authorizationURL)?client_id=\(sharedEngine.appClientID)&redirect_uri=\(sharedEngine.appRedirectURL)&response_type=token")
         let url = NSURL(string: "\(sharedEngine.authorizationURL)?client_id=\(sharedEngine.appClientID)&redirect_uri=\(sharedEngine.appRedirectURL)&response_type=token")
         webView.loadRequest(NSURLRequest(URL: url!))
         
@@ -36,7 +32,6 @@ class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
             var components = URLString?.componentsSeparatedByString(delimeter)
             if components!.count > 1 {
                 let accessToken = components!.last
-                println("ACCESS TOKEN = \(accessToken)")
                 
                 NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "MjolnirInstagramAccessToken")
                 NSUserDefaults.standardUserDefaults().synchronize()

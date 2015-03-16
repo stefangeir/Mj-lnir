@@ -14,7 +14,13 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
     
     let datasource = FacebookTVDatasource()
     let delegate = FacebookTVDelegate()
-    let myLoginView = FBLoginView()
+    var myLoginView: FBLoginView? {
+        didSet {
+            if myLoginView != nil {
+                myLoginView!.delegate = self
+            }
+        }
+    }
     
     var openLinksInFacebookApp: Bool {
         get {
@@ -42,8 +48,8 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // FBLoginView as Header. Footer to hide pointless rows of table
-        myLoginView.delegate = self
-        myLoginView.bounds.size.width = tableView.bounds.size.width
+        myLoginView = FBLoginView()
+        myLoginView!.bounds.size.width = tableView.bounds.size.width
         tableView.tableHeaderView = myLoginView
         tableView.tableHeaderView?.hidden = false
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -57,7 +63,7 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
         datasource.controller = self
         delegate.controller = self
         tableView.dataSource = datasource
-        tableView.delegate = delegate        
+        tableView.delegate = delegate
     }
     
     func refresh() {
@@ -167,11 +173,6 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
                 youMustLoginView.removeFromSuperview()
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        datasource.reset()
     }
     
     let viewStoryInWebViewSegueString = "segue.viewStoryInWeb"

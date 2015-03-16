@@ -22,13 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         
-        if FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication) {
-            //            return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
-            return true
-        } else if InstagramEngine.sharedEngine().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
-            return true
+        var wasHandled = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        
+        if !wasHandled {
+            wasHandled = InstagramEngine.sharedEngine().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
         }
-        return false
+        return wasHandled
     }
     
     

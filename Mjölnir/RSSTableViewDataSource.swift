@@ -54,12 +54,9 @@ class RSSTableViewDataSource: NSObject, UITableViewDataSource, MWFeedParserDeleg
     
     
     func feedParser(parser: MWFeedParser, didParseFeedInfo info: MWFeedInfo) {
-        //println(info)
-        // title = info.title
     }
     
     func feedParser(parser: MWFeedParser, didParseFeedItem item: MWFeedItem) {
-        //println(item)
         items.append(item)
     }
     
