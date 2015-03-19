@@ -44,6 +44,7 @@ class InstagramMediaCVVideoCell: UICollectionViewCell {
                 player = MPMoviePlayerController(contentURL: media.standardResolutionVideoURL)
                 if let player = player {
                     player.view.frame = bounds
+                    player.view.backgroundColor = UIColor.clearColor()
                     player.scalingMode = MPMovieScalingMode.AspectFit
                     player.controlStyle = MPMovieControlStyle.None
                     player.repeatMode = .One

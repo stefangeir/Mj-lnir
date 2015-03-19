@@ -14,56 +14,42 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
     
     let datasource = FacebookTVDatasource()
     let delegate = FacebookTVDelegate()
-    var myLoginView: FBLoginView? {
+    
+    var myLoginView: FBLoginView! {
         didSet {
-            if myLoginView != nil {
-                myLoginView!.delegate = self
-            }
-        }
-    }
-    
-    var openLinksInFacebookApp: Bool {
-        get {
-            if let value = NSUserDefaults.standardUserDefaults().objectForKey(openInFacebookAppUserDefaultsString) as? Bool {
-                return value
-            } else {
-                NSUserDefaults.standardUserDefaults().setObject(false, forKey: openInFacebookAppUserDefaultsString)
-                NSUserDefaults.standardUserDefaults().synchronize()
-                return false
-            }
-        }
-        
-        set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: openInFacebookAppUserDefaultsString)
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
-    }
-    
-    var userIsLoggedIn: Bool = false {
-        willSet {
-            showYouMustLoginView(!newValue)
+                myLoginView.delegate = self
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // FBLoginView as Header. Footer to hide pointless rows of table
-        myLoginView = FBLoginView()
-        myLoginView!.bounds.size.width = tableView.bounds.size.width
-        tableView.tableHeaderView = myLoginView
-        tableView.tableHeaderView?.hidden = false
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        tableView.tableFooterView?.hidden = true
         
-        // set rowheights
-        //tableView.rowHeight = UITableViewAutomaticDimension
-        //tableView.estimatedRowHeight = 200
-        
-        // Set datasource and delegate
         datasource.controller = self
         delegate.controller = self
         tableView.dataSource = datasource
         tableView.delegate = delegate
+        
+        // FBLoginView as Header. Footer to hide pointless rows of table
+        myLoginView = FBLoginView()
+        myLoginView.bounds.size.width = tableView.bounds.size.width
+        tableView.tableHeaderView = myLoginView
+        tableView.tableHeaderView?.hidden = false
+        
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.tableFooterView?.hidden = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let center = NSNotificationCenter.defaultCenter()
+        
+        center.addObserver(datasource, selector: "parseData", name: FacebookNetworking.FetchedDataNotification, object: nil)
+        center.addObserver(datasource, selector: "handleFBError:", name: FacebookNetworking.ErrorFetchingDataNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(datasource)
     }
     
     func refresh() {
@@ -73,12 +59,21 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
     @IBAction func refresh(sender: UIRefreshControl?) {
         if userIsLoggedIn {
             refreshControl?.beginRefreshing()
-            datasource.reset()
-            datasource.getData()
+            datasource.refresh()
         } else {
             sender?.endRefreshing()
         }
     }
+    
+
+    
+    var userIsLoggedIn: Bool = false {
+        willSet {
+            showYouMustLoginView(!newValue)
+        }
+    }
+    
+    //MARK: - FBLoginViewDelegate
     func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
         userIsLoggedIn = true
         refresh()
@@ -93,6 +88,8 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
     func loginView(loginView: FBLoginView!, handleError error: NSError!) {
         handleAuthError(error)
     }
+    
+    //MARK: - Error handling
     
     func handleAuthError(error: NSError) {
         var alertText = String()
@@ -110,6 +107,7 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
             } else if FBErrorUtility.errorCategoryForError(error) == FBErrorCategory.AuthenticationReopenSession {
                 alertTitle = "Session error"
                 alertText = "Your current session is no longer valid. Please log in again."
+                
                 showMessage(alertText, withTitle: alertTitle)
             } else {
                 alertTitle = "Eitthvað vesen"
@@ -119,53 +117,34 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
         }
     }
     
+    
     func showMessage(text: String, withTitle: String) {
        let alertController =  UIAlertController(title: withTitle, message: text, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Flott", style: UIAlertActionStyle.Default,handler: nil))
         presentViewController(alertController, animated: true, completion: nil)
         
     }
+
+
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "selectedRow:", name: "selectedItemInFacebookView", object: nil)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-    func selectedRow(note: NSNotification) {
-        
-        let indexPath = note.object as NSIndexPath
-        let row = indexPath.row
-        if row < datasource.fbPosts.count {
-            let appUrl = NSURL(string: "fb://story?id=" + datasource.getIdInRow(row))
-            
-            if openLinksInFacebookApp && UIApplication.sharedApplication().canOpenURL(appUrl!) {
-                UIApplication.sharedApplication().openURL(appUrl!)
-            } else {
-                performSegueWithIdentifier(viewStoryInWebViewSegueString, sender: tableView.cellForRowAtIndexPath(indexPath))
-            }
-        }
-        
-    }
-    
-    var youMustLoginView = UILabel()
+    lazy var youMustLoginView: UILabel = {
+        var youMustLoginView = UILabel()
+        youMustLoginView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        youMustLoginView.text = "Skráðu þig inn með facebook"
+        youMustLoginView.textColor = UIColor.whiteColor()
+        youMustLoginView.numberOfLines = 0
+        youMustLoginView.textAlignment = NSTextAlignment.Center
+        let x: CGFloat = 0.0
+        let y = UIScreen.mainScreen().bounds.height/4
+        let width = UIScreen.mainScreen().bounds.width
+        let height: CGFloat = 60.0
+        youMustLoginView.frame = CGRectMake(x, y, width, height)
+
+        return youMustLoginView
+    }()
     
     func showYouMustLoginView(yes: Bool) {
         if yes {
-            youMustLoginView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-            youMustLoginView.text = "Skráðu þig inn með facebook"
-            youMustLoginView.textColor = UIColor.whiteColor()
-            youMustLoginView.textAlignment = NSTextAlignment.Center
-            let x: CGFloat = 0.0
-            let y = UIScreen.mainScreen().bounds.height/4
-            let width = UIScreen.mainScreen().bounds.width
-            let height: CGFloat = 30.0
-            youMustLoginView.frame = CGRectMake(x, y, width, height)
-            
             tableView.addSubview(youMustLoginView)
             tableView.bringSubviewToFront(youMustLoginView)
         } else {
@@ -174,8 +153,40 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
             }
         }
     }
+
+    //MARK: - Navigation
+    
+    var openLinksInFacebookApp: Bool {
+        get {
+            if let value = NSUserDefaults.standardUserDefaults().objectForKey(openInFacebookAppUserDefaultsString) as? Bool {
+                return value
+            } else {
+                NSUserDefaults.standardUserDefaults().setObject(false, forKey: openInFacebookAppUserDefaultsString)
+                NSUserDefaults.standardUserDefaults().synchronize()
+                return false
+            }
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: openInFacebookAppUserDefaultsString)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
     
     let viewStoryInWebViewSegueString = "segue.viewStoryInWeb"
+    
+    func selectedRow(indexPath: NSIndexPath) {
+        
+        let row = indexPath.row
+        if row < datasource.fbPosts.count {
+            let appUrl = NSURL(string: "fb://story?id=" + datasource.getIdInRow(row))
+            if openLinksInFacebookApp && UIApplication.sharedApplication().canOpenURL(appUrl!) {
+                UIApplication.sharedApplication().openURL(appUrl!)
+            } else {
+                performSegueWithIdentifier(viewStoryInWebViewSegueString, sender: tableView.cellForRowAtIndexPath(indexPath))
+            }
+        }
+        
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == viewStoryInWebViewSegueString {

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 struct fbPost {
     var link: String?
     var pictureUrl: String?
@@ -19,129 +18,40 @@ struct fbPost {
 
 class FacebookTVDatasource: NSObject, UITableViewDataSource
 {
-    var posts = [JSON]()
-    var paginationNext: String?
-    weak var controller: FacebookTVC?
-    var retryCount = 0
-    
-    func reset() {
-        posts.removeAll(keepCapacity: true)
-        fbPosts.removeAll(keepCapacity: true)
-        paginationNext = nil
-        indexOfNextPostToParse = 0
-    }
-    
-    func getData() {
 
-        var requestPath = String()
-        
-        if paginationNext == nil {
-            reset()
-            requestPath = "Mjolnir.MMAclub?fields=posts.limit(10)"
-        } else {
-            requestPath = paginationNext!
-        }
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        FBRequestConnection.startWithGraphPath(requestPath,
-            parameters: nil,
-            HTTPMethod: "GET",
-            completionHandler:{ [unowned self] response, data, error in
-                if error == nil {
-                    self.retryCount = 0
-                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                        let jsonData = JSON(data)
-                        
-                        if let posts = jsonData["posts"]["data"].array {
-                            self.posts += posts
-                            self.parseData()
-                        } else if let posts = jsonData["data"].array {
-                            self.posts += posts
-                            self.parseData()
-                        }
-                        if let paginationPath = jsonData["posts"]["paging"]["next"].string {
-                            let delimeter = "https://graph.facebook.com/v2.2/"
-                            self.paginationNext = paginationPath.componentsSeparatedByString(delimeter).last
-                        } else if let paginationPath = jsonData["paging"]["next"].string {
-                            let delimeter = "https://graph.facebook.com/v2.2/"
-                            self.paginationNext = paginationPath.componentsSeparatedByString(delimeter).last
-                        }
-
-                    
-                } else {
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    self.controller?.refreshControl?.endRefreshing()
-                    self.handleFBError(error)
-                }
-        })
-    }
-    
-    func handleFBError(error: NSError) {
-       
-        if FBErrorUtility.errorCategoryForError(error) == FBErrorCategory.Permissions {
-            controller?.userIsLoggedIn = false
-        } else if FBErrorUtility.errorCategoryForError(error) == FBErrorCategory.Retry || FBErrorUtility.errorCategoryForError(error) == FBErrorCategory.Throttling {
-            if retryCount < 3 {
-                retryCount++
-                getData()
-            } else {
-                controller?.showMessage("Gat ekki sótt gögn", withTitle: "Error")
-            }
-            
-        } else {
-            controller?.showMessage("Reyndu aftur", withTitle: "Eitthvað vesen")
-        }
-    }
-    
-    
-    
+    weak var controller: FacebookTVC!
+    var datamodel = FacebookDataModel()
     var fbPosts = [fbPost]()
     var indexOfNextPostToParse: Int = 0
-    
-    func parseData() {
-        var i = Int()
-        
-        for i = indexOfNextPostToParse; i < posts.count; i++ {
-            let post = posts[i]
-            var messageString = post["message"].string
-            
-            if let message = messageString {
-                messageString = message
-                
-            } else {
-                messageString = post["story"].string
-            }
-            var thisPost = fbPost(link: post["link"].string,
-                pictureUrl: post["picture"].string,
-                message: messageString,
-                date: post["created_time"].string,
-                id: post["id"].string)
-            
-            fbPosts.append(thisPost)
-        }
-        
-        indexOfNextPostToParse = i
 
-        
-        controller?.refreshControl?.endRefreshing()
-        controller?.tableView.reloadData()
+    func refresh() {
+        reset()
+        datamodel.performRequest()
+    }
+    
+    func reset() {
+        datamodel.jsonDataArray.removeAll(keepCapacity: true)
+        datamodel.paginationNext = nil
+        datamodel.retryCount = 0
+        fbPosts.removeAll(keepCapacity: true)
+        indexOfNextPostToParse = 0
+    }
+
+    private struct Storyboard {
+        static let PostCellIdentifier = "reusable.facebookCell"
+        static let LoadingCellIdentifier = "reusable.facebookLoadingCell"
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if controller!.userIsLoggedIn {
+        if controller.userIsLoggedIn {
             return fbPosts.count + 1 // + 1 fyrir loading cellið
         } else {
             return 0
         }
     }
     
-    private struct Storyboard {
-        static let PostCellIdentifier = "reusable.facebookCell"
-        static let LoadingCellIdentifier = "reusable.facebookLoadingCell"
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-
         if indexPath.row < fbPosts.count {
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.PostCellIdentifier, forIndexPath: indexPath) as FacebookPostTVCell
             cell.post = fbPosts[indexPath.row]
@@ -160,20 +70,77 @@ class FacebookTVDatasource: NSObject, UITableViewDataSource
     
     func getItemLinkInRow(row: Int) -> String {
         
-        let string = fbPosts[row].id!
-        let stringArray = string.componentsSeparatedByString("_")
-        if stringArray.count == 2 {
-            return "http://www.facebook.com/" + stringArray[0] + "/posts/" + stringArray[1]
+        if row < fbPosts.count {
+            let postIDString = fbPosts[row].id!
+            let stringArray = postIDString.componentsSeparatedByString("_")
+            if stringArray.count == 2 {
+                return "http://www.facebook.com/\(stringArray[0])/posts/\(stringArray[1])"
+            }
+            return "http://www.facebook.com/\(postIDString)"
         }
-        
-        return "http://www.facebook.com/" + string
+        return "http://www.facebook.com/"
         
     }
+    
     func getItemTitleInRow(row: Int) -> String {
         return fbPosts[row].message!
     }
+    
     func getIdInRow(row: Int) -> String {
         return fbPosts[row].id!
     }
+    
+
+    
+    func parseData() {
+        var i = Int()
+        
+        for i = indexOfNextPostToParse; i < datamodel.jsonDataArray.count; i++ {
+            let post = datamodel.jsonDataArray[i]
+            var messageString = post["message"].string
+            
+            if messageString == nil {
+                messageString = post["story"].string
+            }
+            
+            let thisPost = fbPost(link: post["link"].string,
+                pictureUrl: post["picture"].string,
+                message: messageString,
+                date: post["created_time"].string,
+                id: post["id"].string)
+            
+            fbPosts.append(thisPost)
+        }
+        
+        indexOfNextPostToParse = i
+        controller.refreshControl?.endRefreshing()
+        controller.tableView.reloadData()
+    }
+    
+    func handleFBError(note: NSNotification) {
+        
+        if let errorDict = note.userInfo as? [String:NSError] {
+            let error = errorDict["Error"]
+            
+            let category = FBErrorUtility.errorCategoryForError(error)
+            if category == FBErrorCategory.Permissions {
+                controller.userIsLoggedIn = false
+            } else if category == .Retry || category == .Throttling {
+                if datamodel.retryCount < 3 {
+                    datamodel.retryCount++
+                    datamodel.performRequest()
+                } else {
+                    controller.showMessage("Gat ekki sótt gögn", withTitle: "Error")
+                }
+                
+            } else if category == .AuthenticationReopenSession {
+                controller.userIsLoggedIn = false
+                controller.showMessage("Skráðu þig aftur inn", withTitle: "Logged out")
+            } else {
+                controller.showMessage("Reyndu aftur", withTitle: "Eitthvað vesen")
+            }
+        }
+    }
+
     
 }

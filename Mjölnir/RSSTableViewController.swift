@@ -20,7 +20,6 @@ class RSSTableViewController: UITableViewController, MWFeedParserDelegate {
         datasource.controller = self
 		tableView.dataSource = datasource
         tableView.delegate = delegate
-        
 
         title = "Fréttir"
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -28,6 +27,18 @@ class RSSTableViewController: UITableViewController, MWFeedParserDelegate {
         
         refresh()
 	}
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let center = NSNotificationCenter.defaultCenter()
+        center.addObserver(datasource, selector: "didFetchNews", name: RSSNetworking.FetchedNews, object: nil)
+        center.addObserver(datasource, selector: "errorFetchingNews:", name: RSSNetworking.ErrorFetchingNews, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(datasource)
+    }
     
     func refresh() {
         if refreshControl != nil {
@@ -37,7 +48,7 @@ class RSSTableViewController: UITableViewController, MWFeedParserDelegate {
     }
     
     @IBAction func refresh(sender: UIRefreshControl?) {
-        datasource.request()
+        datasource.datamodel.request()
     }
 
     // MARK: - Navigation

@@ -23,6 +23,8 @@ class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
         
     }
     
+    var userDenied = false
+    
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         var URLString = request.URL.absoluteString
         
@@ -37,9 +39,25 @@ class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
                 performSegueWithIdentifier(userLoggedInSegueString, sender: self)
+            } else {
+                // User denied access
+                delimeter = "access_denied"
+                components = URLString?.componentsSeparatedByString(delimeter)
+                if components!.count > 0 {
+                    userDenied = true
+                    performSegueWithIdentifier(userLoggedInSegueString, sender: self)
+                }
             }
             return false
         }
         return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == userLoggedInSegueString {
+            if let cv = segue.destinationViewController as? InstagramCVC {
+                cv.userDenied = userDenied
+            }
+        }
     }
 }

@@ -11,6 +11,7 @@
 		730B0EBD1A9DDF320031D0E5 /* InstagramMediaCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B0EBC1A9DDF320031D0E5 /* InstagramMediaCVC.swift */; };
 		730B0EC11A9DF38B0031D0E5 /* InstagramMediaCVCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B0EC01A9DF38B0031D0E5 /* InstagramMediaCVCommentCell.swift */; };
 		7315C9541AAC8CFC00CC85CA /* InstagramMediaCVImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315C9531AAC8CFC00CC85CA /* InstagramMediaCVImageCell.swift */; };
+		7318E1C81ABB1DF200182A9A /* RSSDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7318E1C71ABB1DF200182A9A /* RSSDataModel.swift */; };
 		731A9B821A9887900038A2B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 731A9B811A9887900038A2B7 /* LaunchScreen.xib */; };
 		732DADDD1AAB9A7300CB416F /* InstagramMediaCVDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732DADDC1AAB9A7300CB416F /* InstagramMediaCVDatasource.swift */; };
 		732DADDF1AAB9A7F00CB416F /* InstagramMediaCVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732DADDE1AAB9A7F00CB416F /* InstagramMediaCVDelegate.swift */; };
@@ -18,6 +19,7 @@
 		732FC6A01AB0CB67002BEF16 /* FacebookWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FC69F1AB0CB67002BEF16 /* FacebookWebViewController.swift */; };
 		734C3AB21AAC525500DDE623 /* InstagramMediaCVDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C3AB11AAC525500DDE623 /* InstagramMediaCVDateCell.swift */; };
 		734C3AB41AAC529100DDE623 /* InstagramMediaCVLikesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C3AB31AAC529100DDE623 /* InstagramMediaCVLikesCell.swift */; };
+		7355DA8D1AB867D4004F46DF /* FacebookDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355DA8C1AB867D4004F46DF /* FacebookDataModel.swift */; };
 		735A70031A98EB6F00AFF9EF /* FacebookTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735A70021A98EB6F00AFF9EF /* FacebookTVC.swift */; };
 		735A70051A98EBBE00AFF9EF /* FacebookTVDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735A70041A98EBBE00AFF9EF /* FacebookTVDatasource.swift */; };
 		735A70071A98EBCB00AFF9EF /* FacebookTVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735A70061A98EBCB00AFF9EF /* FacebookTVDelegate.swift */; };
@@ -51,6 +53,7 @@
 		73F40DAD1A987FC20058B24D /* RSSTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40D9F1A987FC20058B24D /* RSSTableViewDelegate.swift */; };
 		73F40DAE1A987FC20058B24D /* RSSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40DA01A987FC20058B24D /* RSSTableViewCell.swift */; };
 		73F40DAF1A987FC20058B24D /* RSSWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40DA11A987FC20058B24D /* RSSWebViewController.swift */; };
+		73FB8F701ABAED29004E0AC5 /* InstagramDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB8F6F1ABAED29004E0AC5 /* InstagramDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,7 @@
 		730B0EBC1A9DDF320031D0E5 /* InstagramMediaCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVC.swift; sourceTree = "<group>"; };
 		730B0EC01A9DF38B0031D0E5 /* InstagramMediaCVCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVCommentCell.swift; sourceTree = "<group>"; };
 		7315C9531AAC8CFC00CC85CA /* InstagramMediaCVImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVImageCell.swift; sourceTree = "<group>"; };
+		7318E1C71ABB1DF200182A9A /* RSSDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSDataModel.swift; sourceTree = "<group>"; };
 		731A9B811A9887900038A2B7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		732DADDC1AAB9A7300CB416F /* InstagramMediaCVDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVDatasource.swift; sourceTree = "<group>"; };
 		732DADDE1AAB9A7F00CB416F /* InstagramMediaCVDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 		732FC69F1AB0CB67002BEF16 /* FacebookWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookWebViewController.swift; sourceTree = "<group>"; };
 		734C3AB11AAC525500DDE623 /* InstagramMediaCVDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVDateCell.swift; sourceTree = "<group>"; };
 		734C3AB31AAC529100DDE623 /* InstagramMediaCVLikesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVLikesCell.swift; sourceTree = "<group>"; };
+		7355DA8C1AB867D4004F46DF /* FacebookDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookDataModel.swift; sourceTree = "<group>"; };
 		735A70021A98EB6F00AFF9EF /* FacebookTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTVC.swift; sourceTree = "<group>"; };
 		735A70041A98EBBE00AFF9EF /* FacebookTVDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTVDatasource.swift; sourceTree = "<group>"; };
 		735A70061A98EBCB00AFF9EF /* FacebookTVDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookTVDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +120,7 @@
 		73F40DA01A987FC20058B24D /* RSSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSTableViewCell.swift; sourceTree = "<group>"; };
 		73F40DA11A987FC20058B24D /* RSSWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSWebViewController.swift; sourceTree = "<group>"; };
 		73F40DC21A9883C20058B24D /* Mjolnir-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mjolnir-bridging-header.h"; sourceTree = "<group>"; };
+		73FB8F6F1ABAED29004E0AC5 /* InstagramDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,7 @@
 				735A70021A98EB6F00AFF9EF /* FacebookTVC.swift */,
 				735A70041A98EBBE00AFF9EF /* FacebookTVDatasource.swift */,
 				735A70061A98EBCB00AFF9EF /* FacebookTVDelegate.swift */,
+				7355DA8C1AB867D4004F46DF /* FacebookDataModel.swift */,
 				73725EEE1AA904F500F4650B /* FacebookLoadingTVCell.swift */,
 				73EF0DFE1AA9C17F0014E02A /* FacebookPostTVCell.swift */,
 				732FC69D1AB0B4BF002BEF16 /* FacebookSettingsVC.swift */,
@@ -173,6 +180,7 @@
 				73CC28361A9B999F006FEA25 /* InstagramCVC.swift */,
 				73CC28381A9B99AE006FEA25 /* InstagramCVDatasource.swift */,
 				73CC283A1A9B99B9006FEA25 /* InstagramCVDelegate.swift */,
+				73FB8F6F1ABAED29004E0AC5 /* InstagramDataModel.swift */,
 				73E471541A9BA19800FB18F4 /* InstagramCVCell.swift */,
 				7368F3E31AA5EB6700F90A38 /* instagramCVLoadingCell.swift */,
 				73E471571A9BB49300FB18F4 /* InstagramLoginWebViewController.swift */,
@@ -274,6 +282,7 @@
 				73F40D9D1A987FC20058B24D /* RSSTableViewController.swift */,
 				73F40D9E1A987FC20058B24D /* RSSTableViewDataSource.swift */,
 				73F40D9F1A987FC20058B24D /* RSSTableViewDelegate.swift */,
+				7318E1C71ABB1DF200182A9A /* RSSDataModel.swift */,
 				73F40DA01A987FC20058B24D /* RSSTableViewCell.swift */,
 				73F40DA11A987FC20058B24D /* RSSWebViewController.swift */,
 			);
@@ -446,6 +455,7 @@
 				735A70051A98EBBE00AFF9EF /* FacebookTVDatasource.swift in Sources */,
 				73E471581A9BB49300FB18F4 /* InstagramLoginWebViewController.swift in Sources */,
 				73F40DAE1A987FC20058B24D /* RSSTableViewCell.swift in Sources */,
+				73FB8F701ABAED29004E0AC5 /* InstagramDataModel.swift in Sources */,
 				735A70031A98EB6F00AFF9EF /* FacebookTVC.swift in Sources */,
 				73F40DAD1A987FC20058B24D /* RSSTableViewDelegate.swift in Sources */,
 				73F40DA61A987FC20058B24D /* MainCVC.swift in Sources */,
@@ -455,6 +465,7 @@
 				73CC28391A9B99AE006FEA25 /* InstagramCVDatasource.swift in Sources */,
 				73F40DAB1A987FC20058B24D /* RSSTableViewController.swift in Sources */,
 				7368F3E41AA5EB6700F90A38 /* instagramCVLoadingCell.swift in Sources */,
+				7318E1C81ABB1DF200182A9A /* RSSDataModel.swift in Sources */,
 				73F40DA51A987FC20058B24D /* TimetableDataModel.swift in Sources */,
 				73F40DAA1A987FC20058B24D /* MainCVSectionHeader.swift in Sources */,
 				732DADDF1AAB9A7F00CB416F /* InstagramMediaCVDelegate.swift in Sources */,
@@ -468,6 +479,7 @@
 				73F40D751A987F490058B24D /* AppDelegate.swift in Sources */,
 				732DADDD1AAB9A7300CB416F /* InstagramMediaCVDatasource.swift in Sources */,
 				73F40DAF1A987FC20058B24D /* RSSWebViewController.swift in Sources */,
+				7355DA8D1AB867D4004F46DF /* FacebookDataModel.swift in Sources */,
 				73F40DA91A987FC20058B24D /* MainCVCell.swift in Sources */,
 				73CC28371A9B999F006FEA25 /* InstagramCVC.swift in Sources */,
 				734C3AB21AAC525500DDE623 /* InstagramMediaCVDateCell.swift in Sources */,

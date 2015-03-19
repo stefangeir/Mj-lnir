@@ -31,24 +31,15 @@ class instagramMediaCVDatasource: NSObject, UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
-        
-        //        if media.caption.text != nil {
-        //            return media.comments.count + 2 // comments + caption + likes
-        //        } else {
-        //            return media.comments.count  + 1 // no caption, comments + likes
-        //        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         if indexPath.section == 0 {
-            // if indexPath.row == 0 {
-            // Timestamp
+            
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(dateReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVDateCell
             cell.dateString = getDateString(media.createdDate)
             return cell
-            // } else {
-            // Image
         }
         else if indexPath.section == 1 {
             
@@ -61,16 +52,14 @@ class instagramMediaCVDatasource: NSObject, UICollectionViewDataSource
                 cell.media = media
                 return cell
             }
-            //}
+            
         } else if indexPath.section == 2 {
-            //            if indexPath.row == 0 {
+            
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(likesReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVLikesCell
             
             cell.numberOfLikes = media.likesCount
             return cell
         }
-            //} else if indexPath.row == 1 && media.caption.text != nil {
-            // captions
             
         else if indexPath.section == 3 && media.caption.text != nil {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVCommentCell
@@ -80,8 +69,7 @@ class instagramMediaCVDatasource: NSObject, UICollectionViewDataSource
             
             return cell
         } else {
-            //} else {
-            // comments
+            
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVCommentCell
             
             var row = indexPath.section - 3 // -3 because of date, image, likes
@@ -138,6 +126,7 @@ class instagramMediaCVDatasource: NSObject, UICollectionViewDataSource
         if let cell = controller?.collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 1)) as? InstagramMediaCVVideoCell {
             if let player = cell.player {
                 player.stop()
+                cell.showVideoIcon()
             }
         }
     }

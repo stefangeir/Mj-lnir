@@ -131,6 +131,12 @@ public struct JSON {
 
 }
 
+extension JSON {
+    public init(_ jsonArray:[JSON]) {
+        self.init(jsonArray.map { $0.object })
+    }
+}
+
 // MARK: - SequenceType
 extension JSON: SequenceType{
     
