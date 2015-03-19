@@ -13,7 +13,8 @@ struct FacebookNetworking {
     static let ErrorFetchingDataNotification = "FacebookDataModel error while fetching data"
 }
 
-class FacebookDataModel: NSObject {
+class FacebookDataModel: NSObject
+{
     
     var jsonDataArray = [JSON]()
     var paginationNext: String?
@@ -78,41 +79,37 @@ class FacebookDataModel: NSObject {
         })
     }
     
-    func checkForNewPosts() -> Bool {
-        var thereAreNewPosts = false
-        let requestPath = "Mjolnir.MMAclub?fields=posts.limit(1)"
-        
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        lastRequestConnection = FBRequestConnection()
-        let request = FBRequest(forGraphPath: requestPath)
-        
-        lastRequestConnection!.addRequest(request, completionHandler: { [unowned self] response, data, error in
-            if error == nil {
-                self.retryCount = 0
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                var jsonData = JSON(data)
-                
-
-                if let posts = jsonData["posts"]["data"].array {
-                    posts
-                    
-                } else if let posts = jsonData["data"].array {
-                    post += posts
-                }
-                
-                
-            } else {
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                let center = NSNotificationCenter.defaultCenter()
-                center.postNotificationName(FacebookNetworking.ErrorFetchingDataNotification, object: self, userInfo: ["Error": error])
-            }
-        })
-        lastRequestConnection!.start()
-        
-        return thereAreNewPosts
-        
-    }
-
+//    func checkForNewPosts() -> Bool {
+//        var thereAreNewPosts = false
+//        let requestPath = "Mjolnir.MMAclub?fields=posts.limit(1)"
+//        
+//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//        lastRequestConnection = FBRequestConnection()
+//        let request = FBRequest(forGraphPath: requestPath)
+//        
+//        lastRequestConnection!.addRequest(request, completionHandler: { [unowned self] response, data, error in
+//            if error == nil {
+//                self.retryCount = 0
+//                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//                var jsonData = JSON(data)
+//                
+//
+//                if let posts = jsonData["posts"]["data"].array {
+//                    posts
+//                    
+//                } else if let posts = jsonData["data"].array {
+//                    post += posts
+//                }
+//                
+//                
+//            } else {
+//                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//                let center = NSNotificationCenter.defaultCenter()
+//                center.postNotificationName(FacebookNetworking.ErrorFetchingDataNotification, object: self, userInfo: ["Error": error])
+//            }
+//        })
+//        lastRequestConnection!.start()
+//        
+//        return thereAreNewPosts
+//    }
 }
-
-
