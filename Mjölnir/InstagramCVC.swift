@@ -41,8 +41,9 @@ class InstagramCVC: UICollectionViewController {
         collectionView?.delegate = delegate
         
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = getItemSize()
+            (layout.itemSize, layout.minimumInteritemSpacing, layout.minimumLineSpacing) = getItemSizeAndSpacing()
         }
+        //updateLoginButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,41 +65,53 @@ class InstagramCVC: UICollectionViewController {
     
     func errorFetchingMedia(note: NSNotification) {
         
-        updateLoginButton()
         if let errorDict = note.userInfo as? [String : NSError] {
             if let error = errorDict["Error"] {
-            let alertController = UIAlertController(title: "Vesen: ", message:
-                error.localizedDescription, preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "Flott", style: .Default,handler: nil))
-            
-           presentViewController(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "Vesen: ", message:
+                    error.localizedDescription, preferredStyle: .Alert)
+                alertController.addAction(UIAlertAction(title: "Flott", style: .Default,handler: nil))
+                
+                presentViewController(alertController, animated: true, completion: nil)
             }
         }
         
     }
     
-    func getItemSize() -> CGSize {
+    func getItemSizeAndSpacing() -> (CGSize, CGFloat, CGFloat) {
         
-        var width = UIScreen.mainScreen().bounds.size.width/3 - 1
+        // Get pixels per point and screenWidth
+        let scaleFactor = UIScreen.mainScreen().scale
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let spacingInPixels: CGFloat = 3
         
-        if UIScreen.mainScreen().bounds.size.width > 750 {
-            width = UIScreen.mainScreen().bounds.size.width/6 - 3
-        } else if UIScreen.mainScreen().bounds.size.width > 415 {
-            width = UIScreen.mainScreen().bounds.size.width/5 - 2
-        } else if UIScreen.mainScreen().bounds.size.width > 380 {
-            width = UIScreen.mainScreen().bounds.size.width/4 - 1.5
+        // 3 images across, need 1 pixel spacing twice = 0.5 points twice = 2/scaleFactor = 2/2 = 1
+        var numberOfImagesAcross: CGFloat  = 3
+        var sumOfSpacingNeeded: CGFloat = 2 * spacingInPixels / scaleFactor
+        
+        var itemWidth: CGFloat
+        
+        if screenWidth > 750 {
+            numberOfImagesAcross = 6
+            sumOfSpacingNeeded = 5 * spacingInPixels / scaleFactor
+        } else if screenWidth > 415 {
+            numberOfImagesAcross =  5
+            sumOfSpacingNeeded = 4 * spacingInPixels / scaleFactor
+        } else if screenWidth > 380 {
+            numberOfImagesAcross = 4
+            sumOfSpacingNeeded = 3 * spacingInPixels / scaleFactor
         }
         
-        return CGSize(width: width, height: width)
+        itemWidth = (screenWidth / numberOfImagesAcross) - (sumOfSpacingNeeded / numberOfImagesAcross)
+        
+        let lineAndCellSpacing = spacingInPixels / scaleFactor
+        
+        return (CGSize(width: itemWidth, height: itemWidth), lineAndCellSpacing, lineAndCellSpacing)
         
     }
 
-    
     func refresh() {
-        datasource.datamodel.data.removeAll(keepCapacity: true)
+        datasource.datamodel.reset()
         datasource.datamodel.loadMjolnir = loadMjolnir
-        datasource.datamodel.firstFetchDone = false
-        datasource.datamodel.currentPaginationInfo = InstagramPaginationInfo()
         datasource.datamodel.fetchMedia()
     }
     
@@ -153,14 +166,16 @@ class InstagramCVC: UICollectionViewController {
         }
     }
     
+    //MARK: - Segue to media
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == showMediaSegueString {
             if let instagramMedia = segue.destinationViewController as? InstagramMediaCVC {
                 if let cell = sender as? InstagramCVCell {
                     let indexPath = collectionView!.indexPathForCell(cell)
                     instagramMedia.media = datasource.datamodel.data[indexPath!.row]
-                    navigationController?.navigationBarHidden = false
-                    navigationController?.hidesBarsOnSwipe = false
+                    instagramMedia.navigationController?.navigationBarHidden = false
+                    instagramMedia.navigationController?.hidesBarsOnSwipe = false
                 }
             }
         }

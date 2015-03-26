@@ -11,11 +11,13 @@ import UIKit
 class FacebookPostTVCell: UITableViewCell
 {
     
-    @IBOutlet var fbPostLabel: UILabel!
-    @IBOutlet var fbPostTimeLabel: UILabel!
-    @IBOutlet var fbPostImageView: UIImageView!
+    //TODO: this wasn't weak, might be a problem
+    @IBOutlet weak var fbPostTitleLabel: UILabel!
+    @IBOutlet weak var fbPostLabel: UILabel!
+    @IBOutlet weak var fbPostTimeLabel: UILabel!
+    @IBOutlet weak var fbPostImageView: UIImageView!
     
-    var post: fbPost? {
+    var post: FbPost? {
         didSet {
             updateUI()
         }
@@ -23,6 +25,8 @@ class FacebookPostTVCell: UITableViewCell
     
     func updateUI() {
         // reset old info
+        fbPostTitleLabel?.text = nil
+        fbPostTitleLabel.attributedText = nil
         fbPostLabel?.text = nil
         fbPostLabel?.attributedText = nil
         fbPostTimeLabel?.text = nil
@@ -30,20 +34,33 @@ class FacebookPostTVCell: UITableViewCell
         
         //fbPostImageView.contentMode = UIViewContentMode.ScaleAspectFit
         if let post = self.post {
-            if post.pictureUrl != nil {
-                let url = NSURL(string: post.pictureUrl!)
+            if post.PictureUrl != nil {
+                let url = NSURL(string: post.PictureUrl!)
                 fbPostImageView.setImageWithURL(url, placeholderImage: UIImage(named: placeholderImageNameString))
             } else {
-                fbPostImageView.image = UIImage(named: placeholderImageNameString)
+                //                fbPostImageView.image = UIImage(named: placeholderImageNameString)
+                fbPostImageView.image = nil
             }
             
-            if let message = post.message {
+            if let story = post.Story {
+                fbPostTitleLabel.text = story
+            } else if let postDescription = post.Description {
+                fbPostTitleLabel.text = postDescription
+                if let caption = post.Caption {
+                    fbPostTitleLabel.text = postDescription + " - \(caption)"
+                }
+            } else {
+                fbPostTitleLabel.text = nil
+            }
+            
+            if let message = post.Message {
                 fbPostLabel.text = message
             } else {
-                fbPostLabel.text = " "
+                fbPostLabel.text = nil // Þarf þetta?
             }
+            
             backgroundColor = UIColor.blackColor()
-            let date = NSDate(fromInternetDateTimeString: post.date, formatHint: DateFormatHintRFC3339)
+            let date = NSDate(fromInternetDateTimeString: post.Date, formatHint: DateFormatHintRFC3339)
             fbPostTimeLabel.text = getDateString(date)
         }
     }

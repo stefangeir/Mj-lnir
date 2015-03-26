@@ -28,7 +28,7 @@ class InstagramCVCell: UICollectionViewCell {
         // load new information (if any)
         
         if let media = self.media {
-            imageView.setImageWithURL(media.thumbnailURL, placeholderImage: UIImage(named: placeholderImageNameString))
+            imageView.setImageWithURL(media.lowResolutionImageURL, placeholderImage: UIImage(named: placeholderImageNameString))
             imageView.contentMode = UIViewContentMode.ScaleAspectFill
             caption.text = media.caption.text
             caption.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)

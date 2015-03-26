@@ -8,12 +8,14 @@
 
 import UIKit
 
-struct fbPost {
-    var link: String?
-    var pictureUrl: String?
-    var message: String?
-    var date: String?
-    var id: String?
+struct FbPost {
+    var PictureUrl: String?
+    var Description: String?
+    var Caption: String?
+    var Story: String?
+    var Message: String?
+    var Date: String?
+    var ID: String?
 }
 
 class FacebookTVDatasource: NSObject, UITableViewDataSource
@@ -21,7 +23,7 @@ class FacebookTVDatasource: NSObject, UITableViewDataSource
 
     weak var controller: FacebookTVC!
     var datamodel = FacebookDataModel()
-    var fbPosts = [fbPost]()
+    var fbPosts = [FbPost]()
     var indexOfNextPostToParse: Int = 0
 
     func refresh() {
@@ -71,7 +73,7 @@ class FacebookTVDatasource: NSObject, UITableViewDataSource
     func getItemLinkInRow(row: Int) -> String {
         
         if row < fbPosts.count {
-            let postIDString = fbPosts[row].id!
+            let postIDString = fbPosts[row].ID!
             let stringArray = postIDString.componentsSeparatedByString("_")
             if stringArray.count == 2 {
                 return "http://www.facebook.com/\(stringArray[0])/posts/\(stringArray[1])"
@@ -83,11 +85,11 @@ class FacebookTVDatasource: NSObject, UITableViewDataSource
     }
     
     func getItemTitleInRow(row: Int) -> String {
-        return fbPosts[row].message!
+        return fbPosts[row].Message!
     }
     
     func getIdInRow(row: Int) -> String {
-        return fbPosts[row].id!
+        return fbPosts[row].ID!
     }
     
 
@@ -99,15 +101,13 @@ class FacebookTVDatasource: NSObject, UITableViewDataSource
             let post = datamodel.jsonDataArray[i]
             var messageString = post["message"].string
             
-            if messageString == nil {
-                messageString = post["story"].string
-            }
-            
-            let thisPost = fbPost(link: post["link"].string,
-                pictureUrl: post["picture"].string,
-                message: messageString,
-                date: post["created_time"].string,
-                id: post["id"].string)
+            let thisPost = FbPost(PictureUrl: post["picture"].string,
+                Description: post["description"].string,
+                Caption: post["caption"].string,
+                Story: post["story"].string,
+                Message: post["message"].string,
+                Date: post["created_time"].string,
+                ID: post["id"].string)
             
             fbPosts.append(thisPost)
         }

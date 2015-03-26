@@ -213,10 +213,10 @@
 			isa = PBXGroup;
 			children = (
 				73974B831AA654DF0087F2A5 /* Main.storyboard */,
+				73F40DB11A987FD40058B24D /* Timetable */,
 				73EF5BFD1A9CD9A800295C4C /* Instagram */,
 				73CC28351A9B993B006FEA25 /* Facebook */,
 				73F40DB31A987FEA0058B24D /* RSS feed */,
-				73F40DB11A987FD40058B24D /* Timetable */,
 				73F40D721A987F490058B24D /* Supporting Files */,
 			);
 			path = "Mjölnir";

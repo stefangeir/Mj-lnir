@@ -15,6 +15,8 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
     weak var controller: InstagramCVC!
     var datamodel = InstagramDataModel()
     
+    // MARK: - Notification Actions
+    
     func mediaWasFetched() {
         controller.collectionView?.reloadData()
     }
@@ -29,6 +31,8 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
         controller.showYouMustLoginView(true)
     }
     
+    //MARK: - Datasource methods
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if !datamodel.reachedEndOfFeed {
             return datamodel.data.count + 1 // + 1 fyrir loading cellu
@@ -36,7 +40,7 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
             return datamodel.data.count
         }
     }
-
+    
     private struct Storyboard {
         static let InstagramImageCellReuseIdentifier = "reusable.instagramImageCell"
         static let LoadingCellReuseIdentifier = "reusable.instagramCVLoadingCell"
@@ -55,11 +59,9 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
             cell.backgroundColor = UIColor.clearColor()
             cell.label.textColor = UIColor.whiteColor()
             
-            if NSUserDefaults.standardUserDefaults().boolForKey("MjolnirInstagramAPIAuthenticated") {
-                datamodel.userIsLoggedIn = true
+            if datamodel.userIsLoggedIn {
                 datamodel.fetchMedia()
             } else {
-                datamodel.userIsLoggedIn = false
                 cell.label.text = ""
             }
             

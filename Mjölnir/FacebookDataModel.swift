@@ -15,7 +15,6 @@ struct FacebookNetworking {
 
 class FacebookDataModel: NSObject
 {
-    
     var jsonDataArray = [JSON]()
     var paginationNext: String?
     var retryCount = 0
@@ -34,13 +33,6 @@ class FacebookDataModel: NSObject
         FBRequestConnection.startWithGraphPath(requestPath, completionHandler: { [unowned self] response, data, error in
             if error == nil {
                 
-                
-                if let dataFromServer = data as? NSData {
-                    if let encodedData = NSString(data: dataFromServer, encoding: NSUTF8StringEncoding) {
-                        println(encodedData)
-                    }
-                }
-                
                 self.retryCount = 0
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 let jsonData = JSON(data)
@@ -50,6 +42,7 @@ class FacebookDataModel: NSObject
                     if isInitialFetch {
                         self.jsonDataArray.removeAll(keepCapacity: true)
                     }
+                    println(posts)
                     self.jsonDataArray += posts
                     center.postNotificationName(FacebookNetworking.FetchedDataNotification, object: self)
                     

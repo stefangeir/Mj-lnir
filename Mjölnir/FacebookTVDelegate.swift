@@ -33,7 +33,7 @@ class FacebookTVDelegate: NSObject, UITableViewDelegate
                 return 40.0
             }
         
-        return 120
+        return 150
     }
 }
 

@@ -20,7 +20,6 @@ class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
         let configuration = InstagramEngine.sharedEngineConfiguration()
         let url = NSURL(string: "\(sharedEngine.authorizationURL)?client_id=\(sharedEngine.appClientID)&redirect_uri=\(sharedEngine.appRedirectURL)&response_type=token")
         webView.loadRequest(NSURLRequest(URL: url!))
-        
     }
     
     var userDenied = false
@@ -36,6 +35,7 @@ class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
                 let accessToken = components!.last
                 
                 NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "MjolnirInstagramAccessToken")
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "MjolnirInstagramAPIAuthenticated")
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
                 performSegueWithIdentifier(userLoggedInSegueString, sender: self)

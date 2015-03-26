@@ -21,18 +21,23 @@ class InstagramDataModel: NSObject
     var loadMjolnir = true
     var firstFetchDone = false
     var currentPaginationInfo = InstagramPaginationInfo()
-    var data: [InstagramMedia] = [InstagramMedia]() {
-        didSet {
-            NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.FetchedInstagramDataNotification, object: self)
-        }
+    var data: [InstagramMedia] = [InstagramMedia]()
+    
+    
+    func reset() {
+        reachedEndOfFeed = false
+        firstFetchDone = false
+        currentPaginationInfo = InstagramPaginationInfo()
+        data.removeAll(keepCapacity: true)
     }
+    
     var userIsLoggedIn: Bool = true {
         willSet {
             NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "MjolnirInstagramAPIAuthenticated")
             NSUserDefaults.standardUserDefaults().synchronize()
             
             if newValue {
-            NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.UserDidLogin, object: self)
+                NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.UserDidLogin, object: self)
             } else {
                 NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.UserDidLogout, object: self)
             }
@@ -41,23 +46,34 @@ class InstagramDataModel: NSObject
     
     func fetchMedia() {
         
-        if firstFetchDone {
-            fetchPaginatedMedia()
-        } else {
-            let sharedEngine = InstagramEngine.sharedEngine()
+        let sharedEngine = InstagramEngine.sharedEngine()
+        
+        // If sharedEngine containts no accesstoken from previous fetch we need one
+        if sharedEngine.accessToken == nil {
             
+            // Check weather one is stored in NSUserDefaults
             if let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("MjolnirInstagramAccessToken") as? String {
+
+                // Set it and fetch media
                 sharedEngine.accessToken = accessToken
-            }
-            
-            if sharedEngine.accessToken != nil {
                 if loadMjolnir {
                     getMediaForMjolnir()
                 } else {
                     getMediaForHashtag()
                 }
+                
             } else {
+                
+                // If not, the user is not logged in
                 self.userIsLoggedIn = false
+            }
+        } else {
+
+            // sharedEngine contained accesstoken, fetch media
+            if loadMjolnir {
+                getMediaForMjolnir()
+            } else {
+                getMediaForHashtag()
             }
         }
     }
@@ -68,9 +84,8 @@ class InstagramDataModel: NSObject
             maxId: currentPaginationInfo.nextMaxId,
             withSuccess: { [unowned self] feed, paginationInfo in
                 
-                self.userIsLoggedIn = true
                 self.data += feed as [InstagramMedia]
-                
+                NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.FetchedInstagramDataNotification, object: self)
                 if (paginationInfo != nil) {
                     self.currentPaginationInfo = paginationInfo
                     self.firstFetchDone = true
@@ -83,7 +98,6 @@ class InstagramDataModel: NSObject
                 //TODO: Display the error, only set false if user is not authenticated
                 self.userIsLoggedIn = false
                 NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.ErrorFetchingInstagramDataNotification, object: self, userInfo: ["Error" : error])
-                
         })
 
     }
@@ -94,9 +108,8 @@ class InstagramDataModel: NSObject
             maxId: currentPaginationInfo.nextMaxId,
             withSuccess: { [unowned self] feed, paginationInfo in
                 
-                self.userIsLoggedIn = true
                 self.data += feed as [InstagramMedia]
-                
+                NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.FetchedInstagramDataNotification, object: self)
                 if (paginationInfo != nil) {
                     self.currentPaginationInfo = paginationInfo
                     self.firstFetchDone = true
@@ -112,24 +125,4 @@ class InstagramDataModel: NSObject
                 
         })
     }
-    
-    private func fetchPaginatedMedia() {
-        
-        if  !reachedEndOfFeed {
-            InstagramEngine.sharedEngine().getPaginatedItemsForInfo(currentPaginationInfo, withSuccess: {[unowned self] media, pagination in
-                
-                self.data += media as [InstagramMedia]
-                if pagination != nil {
-                    self.currentPaginationInfo = pagination
-                } else {
-                    self.reachedEndOfFeed = true
-                }
-                
-                }, failure: {[unowned self] (error) -> Void in
-                    NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.ErrorFetchingInstagramDataNotification, object: self, userInfo: ["Error" : error])
-            })
-        }
-    }
-
-   
 }
