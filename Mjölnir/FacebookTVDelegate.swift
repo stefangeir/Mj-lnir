@@ -22,6 +22,7 @@ class FacebookTVDelegate: NSObject, UITableViewDelegate
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if controller.userIsLoggedIn && indexPath.row == controller.datasource.fbPosts.count {
+            println("Calling performrequest in willdisplaycell")
             controller.datasource.datamodel.performRequest()
         }
     }
@@ -33,7 +34,7 @@ class FacebookTVDelegate: NSObject, UITableViewDelegate
                 return 40.0
             }
         
-        return 150
+        return 110
     }
 }
 

@@ -34,34 +34,35 @@ class FacebookPostTVCell: UITableViewCell
         
         //fbPostImageView.contentMode = UIViewContentMode.ScaleAspectFit
         if let post = self.post {
+            
             if post.PictureUrl != nil {
                 let url = NSURL(string: post.PictureUrl!)
                 fbPostImageView.setImageWithURL(url, placeholderImage: UIImage(named: placeholderImageNameString))
-            } else {
-                //                fbPostImageView.image = UIImage(named: placeholderImageNameString)
-                fbPostImageView.image = nil
             }
             
-            if let story = post.Story {
-                fbPostTitleLabel.text = story
-            } else if let postDescription = post.Description {
-                fbPostTitleLabel.text = postDescription
-                if let caption = post.Caption {
-                    fbPostTitleLabel.text = postDescription + " - \(caption)"
+            if let postLinkName = post.LinkName {
+                var postTitle = postLinkName
+                if let postDescription = post.Description {
+                    postTitle += " - " + postDescription
+                    if let caption = post.Caption {
+                        postTitle += " - \(caption)"
+                    }
                 }
-            } else {
-                fbPostTitleLabel.text = nil
+                fbPostTitleLabel.text = postTitle
+            } else if let postsStory = post.Story {
+                fbPostTitleLabel.text = postsStory
             }
             
             if let message = post.Message {
                 fbPostLabel.text = message
-            } else {
-                fbPostLabel.text = nil // Þarf þetta?
             }
             
             backgroundColor = UIColor.blackColor()
-            let date = NSDate(fromInternetDateTimeString: post.Date, formatHint: DateFormatHintRFC3339)
-            fbPostTimeLabel.text = getDateString(date)
+            
+            if let created = post.CreatedTime {
+                let date = NSDate(fromInternetDateTimeString: post.CreatedTime, formatHint: DateFormatHintRFC3339)
+                fbPostTimeLabel.text = getDateString(date)
+            }
         }
     }
     

@@ -26,7 +26,6 @@
 		735A70091A98FA9300AFF9EF /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735A70081A98FA9300AFF9EF /* SwiftyJSON.swift */; };
 		7368F3E41AA5EB6700F90A38 /* instagramCVLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368F3E31AA5EB6700F90A38 /* instagramCVLoadingCell.swift */; };
 		7368F3E61AA5F8F500F90A38 /* ShownClassesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7368F3E51AA5F8F500F90A38 /* ShownClassesTVC.swift */; };
-		736EAE0B1AA9FE6E008A932D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736EAE0A1AA9FE6E008A932D /* FacebookSDK.framework */; };
 		73725EEF1AA904F500F4650B /* FacebookLoadingTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73725EEE1AA904F500F4650B /* FacebookLoadingTVCell.swift */; };
 		7372A4701AADCD7800ED6579 /* InstagramMediaCVVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7372A46F1AADCD7800ED6579 /* InstagramMediaCVVideoCell.swift */; };
 		73974B841AA654DF0087F2A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73974B831AA654DF0087F2A5 /* Main.storyboard */; };
@@ -88,7 +87,6 @@
 		735A70081A98FA9300AFF9EF /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		7368F3E31AA5EB6700F90A38 /* instagramCVLoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = instagramCVLoadingCell.swift; sourceTree = "<group>"; };
 		7368F3E51AA5F8F500F90A38 /* ShownClassesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShownClassesTVC.swift; sourceTree = "<group>"; };
-		736EAE0A1AA9FE6E008A932D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		73725EEE1AA904F500F4650B /* FacebookLoadingTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoadingTVCell.swift; sourceTree = "<group>"; };
 		7372A46F1AADCD7800ED6579 /* InstagramMediaCVVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVVideoCell.swift; sourceTree = "<group>"; };
 		73974B831AA654DF0087F2A5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1805EE3816A74B1206284E2D /* libPods.a in Frameworks */,
-				736EAE0B1AA9FE6E008A932D /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,8 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				73F40D741A987F490058B24D /* AppDelegate.swift */,
-				73F40D7B1A987F490058B24D /* Images.xcassets */,
 				73F40DC21A9883C20058B24D /* Mjolnir-bridging-header.h */,
+				73F40D7B1A987F490058B24D /* Images.xcassets */,
 				731A9B811A9887900038A2B7 /* LaunchScreen.xib */,
 				73F40D731A987F490058B24D /* Info.plist */,
 			);
@@ -301,7 +298,6 @@
 		A855A60E15958975E803D5CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				736EAE0A1AA9FE6E008A932D /* FacebookSDK.framework */,
 				2BFFFBB6B9CAE25BE1B0B673 /* libPods.a */,
 			);
 			name = Frameworks;

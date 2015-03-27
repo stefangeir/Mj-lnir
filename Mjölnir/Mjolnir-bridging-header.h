@@ -12,7 +12,9 @@
 #import "NSDate+InternetDateTime.h"
 #import "NSString+HTML.h"
 #import "UIImageView+AFNetworking.h"
-#import <FacebookSDK/FacebookSDK.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "InstagramKit.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "UIWebView+AFNetworking.h"

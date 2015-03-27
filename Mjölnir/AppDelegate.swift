@@ -16,17 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         AFNetworkActivityIndicatorManager.sharedManager().enabled = true
-        return true
+        
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         
-        var wasHandled = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        var wasHandled = FBSDKApplicationDelegate.sharedInstance().application(application,
+            openURL: url,
+            sourceApplication: sourceApplication,
+            annotation: annotation)
         
         if !wasHandled {
-            wasHandled = InstagramEngine.sharedEngine().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+            wasHandled = InstagramEngine.sharedEngine().application(application,
+                openURL: url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
         }
+        
         return wasHandled
     }
     
@@ -46,13 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        FBAppEvents.activateApp()
-        FBAppCall.handleDidBecomeActive()
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-            FBSession.activeSession().close()
     }
 
 
