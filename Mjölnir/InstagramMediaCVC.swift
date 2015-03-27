@@ -59,6 +59,8 @@ class InstagramMediaCVC: UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.hidesBarsOnSwipe = false
         if media.isVideo {
             NSNotificationCenter.defaultCenter().addObserver(datasource, selector: "playbackStateChanged", name:MPMoviePlayerPlaybackStateDidChangeNotification, object: nil)
         }

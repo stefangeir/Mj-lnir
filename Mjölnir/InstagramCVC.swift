@@ -43,7 +43,7 @@ class InstagramCVC: UICollectionViewController {
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             (layout.itemSize, layout.minimumInteritemSpacing, layout.minimumLineSpacing) = getItemSizeAndSpacing()
         }
-        //updateLoginButton()
+        updateLoginButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -174,8 +174,6 @@ class InstagramCVC: UICollectionViewController {
                 if let cell = sender as? InstagramCVCell {
                     let indexPath = collectionView!.indexPathForCell(cell)
                     instagramMedia.media = datasource.datamodel.data[indexPath!.row]
-                    instagramMedia.navigationController?.navigationBarHidden = false
-                    instagramMedia.navigationController?.hidesBarsOnSwipe = false
                 }
             }
         }
