@@ -50,16 +50,16 @@ PODS:
   - MWFeedParser/NSString+HTML (1.0.1)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.0)
+  - AFNetworking
   - Facebook-iOS-SDK
-  - InstagramKit (= 3.5.0)
+  - InstagramKit
   - MWFeedParser
 
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
+  AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
+  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
   Facebook-iOS-SDK: 523ee69fdd3c37cdca6578c79912f47943035806
-  InstagramKit: f96f2e6ec35efe6c2bfc33b63b2ba56d9856c0c9
-  MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
+  InstagramKit: 32fe78c44f41701825ac567343fb2b682c6e3d02
+  MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
 
-COCOAPODS: 0.36.1
+COCOAPODS: 0.36.3

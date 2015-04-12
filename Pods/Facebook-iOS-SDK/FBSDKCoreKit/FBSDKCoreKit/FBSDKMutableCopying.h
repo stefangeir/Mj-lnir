@@ -27,7 +27,7 @@
 @protocol FBSDKMutableCopying <FBSDKCopying, NSMutableCopying>
 
 /*!
- @abstract Implemented by NSObject as a convenience to mutableCopyWithZone:.
+ @abstract Implemented by NSObject as! a convenience to mutableCopyWithZone:.
  @return A mutable copy of the receiver.
  */
 - (id)mutableCopy;

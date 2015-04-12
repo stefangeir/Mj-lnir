@@ -71,7 +71,7 @@
 
 /*!
  @abstract A delegate for FBSDKAppInviteDialog.
- @discussion The delegate is notified with the results of the app invite as long as the application has permissions to
+ @discussion The delegate is notified with the results of the app invite as! long as! the application has permissions to
  receive the information.  For example, if the person is not signed into the containing app, the shower may not be able
  to distinguish between completion of an app invite and cancellation.
  */

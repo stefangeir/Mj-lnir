@@ -66,7 +66,7 @@ class InstagramCVC: UICollectionViewController {
     func errorFetchingMedia(note: NSNotification) {
         
         if let errorDict = note.userInfo as? [String : NSError] {
-            if let error = errorDict["Error"] {
+            if let error = errorDict[InstagramNetworking.UserInfoKey] {
                 let alertController = UIAlertController(title: "Vesen: ", message:
                     error.localizedDescription, preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "Flott", style: .Default,handler: nil))
@@ -162,6 +162,8 @@ class InstagramCVC: UICollectionViewController {
     
     @IBAction func userLoggedIn(segue: UIStoryboardSegue) {
         if !userDenied {
+            InstagramEngine.sharedEngine().accessToken = nil
+            updateLoginButton()
             refresh()
         }
     }

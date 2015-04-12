@@ -8,8 +8,6 @@
 
 import UIKit
 
-let timetableReusableCellIdentifier = "reusable.timetableClassCell"
-let timetableSectionTitles = ["Salur 1", "Salur 2", "Salur 3"]
 class TimetableClassesTVC: UITableViewController {
 	
     let shownClassesSegueString = "segue.shownClasses"

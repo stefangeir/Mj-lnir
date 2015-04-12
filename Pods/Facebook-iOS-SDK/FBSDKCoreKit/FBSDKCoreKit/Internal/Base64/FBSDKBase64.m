@@ -82,7 +82,7 @@ static FBSDKBase64 *_encoder;
     return nil;
   }
   // This padding will be appended before stripping unknown characters, so if there are unknown characters of count % 4
-  // it will not be able to decode.  Since we assume valid base64 data, we will take this as is.
+  // it will not be able to decode.  Since we assume valid base64 data, we will take this as! is.
   int needPadding = string.length % 4;
   if (needPadding > 0) {
     needPadding = 4 - needPadding;

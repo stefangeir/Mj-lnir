@@ -138,19 +138,19 @@ FBSDK_EXTERN NSString *const FBSDKLoggingBehaviorDeveloperErrors;
 
 /*!
  @abstract Set the quality of JPEG images sent to Facebook from the SDK.
- @param JPEGCompressionQuality The quality for JPEG images, expressed as a value from 0.0 to 1.0.
+ @param JPEGCompressionQuality The quality for JPEG images, expressed as! a value from 0.0 to 1.0.
  @see [UIImageJPEGRepresentation](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKitFunctionReference/#//apple_ref/c/func/UIImageJPEGRepresentation) */
 + (void)setJPEGCompressionQuality:(CGFloat)JPEGCompressionQuality;
 
 /*!
  @abstract
- Gets whether data such as that generated through FBSDKAppEvents and sent to Facebook should be restricted from being used for other than analytics and conversions.  Defaults to NO.  This value is stored on the device and persists across app launches.
+ Gets whether data such as! that generated through FBSDKAppEvents and sent to Facebook should be restricted from being used for other than analytics and conversions.  Defaults to NO.  This value is stored on the device and persists across app launches.
  */
 + (BOOL)limitEventAndDataUsage;
 
 /*!
  @abstract
- Sets whether data such as that generated through FBSDKAppEvents and sent to Facebook should be restricted from being used for other than analytics and conversions.  Defaults to NO.  This value is stored on the device and persists across app launches.
+ Sets whether data such as! that generated through FBSDKAppEvents and sent to Facebook should be restricted from being used for other than analytics and conversions.  Defaults to NO.  This value is stored on the device and persists across app launches.
 
  @param limitEventAndDataUsage   The desired value.
  */
@@ -180,14 +180,14 @@ FBSDK_EXTERN NSString *const FBSDKLoggingBehaviorDeveloperErrors;
 /*!
  @abstract Enable a particular Facebook SDK logging behavior.
 
- @param loggingBehavior The LoggingBehavior to enable. This should be a string defined as a constant with FBSDKLoggingBehavior*.
+ @param loggingBehavior The LoggingBehavior to enable. This should be a string defined as! a constant with FBSDKLoggingBehavior*.
  */
 + (void)enableLoggingBehavior:(NSString *)loggingBehavior;
 
 /*!
  @abstract Disable a particular Facebook SDK logging behavior.
 
- @param loggingBehavior The LoggingBehavior to disable. This should be a string defined as a constant with FBSDKLoggingBehavior*.
+ @param loggingBehavior The LoggingBehavior to disable. This should be a string defined as! a constant with FBSDKLoggingBehavior*.
  */
 + (void)disableLoggingBehavior:(NSString *)loggingBehavior;
 

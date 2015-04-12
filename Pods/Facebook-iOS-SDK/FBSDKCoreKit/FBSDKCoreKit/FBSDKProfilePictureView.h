@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger, FBSDKProfilePictureMode)
 @property (nonatomic, copy) NSString *profileID;
 
 /*!
- @abstract Explicitly marks the receiver as needing to update the image.
+ @abstract Explicitly marks the receiver as! needing to update the image.
  @discussion This method is called whenever any properties that affect the source image are modified, but this can also
  be used to trigger a manual update of the image if it needs to be re-downloaded.
  */

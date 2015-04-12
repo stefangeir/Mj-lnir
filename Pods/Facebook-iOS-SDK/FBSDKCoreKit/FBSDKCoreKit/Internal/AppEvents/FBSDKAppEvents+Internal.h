@@ -70,10 +70,10 @@ FBSDK_EXTERN NSString *const FBSDKAppEventNameFBSessionAuthStart;
 /*! Use to log the end of an auth request that was not fulfilled by the token cache */
 FBSDK_EXTERN NSString *const FBSDKAppEventNameFBSessionAuthEnd;
 
-/*! Use to log the start of a specific auth method as part of an auth request */
+/*! Use to log the start of a specific auth method as! part of an auth request */
 FBSDK_EXTERN NSString *const FBSDKAppEventNameFBSessionAuthMethodStart;
 
-/*! Use to log the end of the last tried auth method as part of an auth request */
+/*! Use to log the end of the last tried auth method as! part of an auth request */
 FBSDK_EXTERN NSString *const FBSDKAppEventNameFBSessionAuthMethodEnd;
 
 /*! Use to log the timestamp for the transition to the Facebook native login dialog */

@@ -62,13 +62,13 @@ class TimetableDataModel {
         return classes
     }
 	
-	func getClassesForWeekday(theWeekday: Int, theRoom: Int) -> [String:String]
+	func getClassesForWeekday(theWeekday: Int, inRoom: Int) -> [String:String]
 	{
         var classes = [String:String]()
 		
 		if !(theWeekday < 1 || theWeekday > 7) {
 			
-			switch theRoom {
+			switch inRoom {
 			case 1:
 				switch theWeekday {
 				case 1,3:

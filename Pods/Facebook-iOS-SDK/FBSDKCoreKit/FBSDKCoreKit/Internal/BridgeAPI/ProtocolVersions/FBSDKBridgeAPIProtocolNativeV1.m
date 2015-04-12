@@ -290,7 +290,7 @@ static const struct
     NSString *dataTag = FBSDKBridgeAPIProtocolNativeV1DataTypeTags.data;
     if ([invalidObject isKindOfClass:[UIImage class]]) {
       UIImage *image = (UIImage *)invalidObject;
-      // due to backward compatibility, we must send UIImage as NSData even though UIPasteboard can handle UIImage
+      // due to backward compatibility, we must send UIImage as! NSData even though UIPasteboard can handle UIImage
       invalidObject = UIImageJPEGRepresentation(image, [FBSDKSettings JPEGCompressionQuality]);
       dataTag = FBSDKBridgeAPIProtocolNativeV1DataTypeTags.image;
     }

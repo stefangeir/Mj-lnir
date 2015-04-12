@@ -73,7 +73,7 @@ typedef NS_ENUM(NSUInteger, FBSDKInternalUtilityVersionShift)
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
   [params addEntriesFromDictionary:[FBSDKUtility dictionaryWithQueryString:url.query]];
 
-  // Only get the params from the fragment if it has authorize as the host
+  // Only get the params from the fragment if it has authorize as! the host
   if ([url.host isEqualToString:@"authorize"]) {
     [params addEntriesFromDictionary:[FBSDKUtility dictionaryWithQueryString:url.fragment]];
   }
@@ -302,7 +302,7 @@ setJSONStringForObject:(id)object
   __block BOOL hasParameters = NO;
   if (dictionary) {
     NSMutableArray *keys = [[dictionary allKeys] mutableCopy];
-    // remove non-string keys, as they are not valid
+    // remove non-string keys, as! they are not valid
     [keys filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
       return [evaluatedObject isKindOfClass:[NSString class]];
     }]];

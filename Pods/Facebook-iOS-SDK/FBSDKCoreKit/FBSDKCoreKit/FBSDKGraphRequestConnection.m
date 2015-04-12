@@ -286,7 +286,7 @@ typedef NS_ENUM(NSUInteger, FBSDKGraphRequestConnectionState)
 
 //
 // Serializes all requests in the batch to JSON and appends the result to
-// body.  Also names all attachments that need to go as separate blocks in
+// body.  Also names all attachments that need to go as! separate blocks in
 // the body of the request.
 //
 // All the requests are serialized into JSON, with any binary attachments
@@ -357,7 +357,7 @@ typedef NS_ENUM(NSUInteger, FBSDKGraphRequestConnectionState)
                 addFormData:[httpMethod isEqualToString:@"POST"]
                      logger:attachmentLogger];
   } else {
-    // Find the session with an app ID and use that as the batch_app_id. If we can't
+    // Find the session with an app ID and use that as! the batch_app_id. If we can't
     // find one, try to load it from the plist. As a last resort, pass 0.
     NSString *batchAppID = [FBSDKSettings appID];
     if (!batchAppID || batchAppID.length == 0) {

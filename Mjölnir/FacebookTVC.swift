@@ -49,8 +49,6 @@ class FacebookTVC: UITableViewController, FBSDKLoginButtonDelegate {
         
         center.addObserver(datasource, selector: "parseData", name: FacebookNetworking.FetchedDataNotification, object: nil)
         center.addObserver(datasource, selector: "handleFBError:", name: FacebookNetworking.ErrorFetchingDataNotification, object: nil)
-        
-        tableView.reloadData()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -74,7 +72,6 @@ class FacebookTVC: UITableViewController, FBSDKLoginButtonDelegate {
     var userIsLoggedIn: Bool = false {
         willSet {
             showYouMustLoginView(!newValue)
-            
         }
     }
     

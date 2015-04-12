@@ -81,7 +81,7 @@
 
 /*!
  @abstract A delegate for FBSDKSharing.
- @discussion The delegate is notified with the results of the sharer as long as the application has permissions to
+ @discussion The delegate is notified with the results of the sharer as! long as! the application has permissions to
  receive the information.  For example, if the person is not signed into the containing app, the sharer may not be able
  to distinguish between completion of a share and cancellation.
  */

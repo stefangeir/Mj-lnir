@@ -120,7 +120,7 @@ typedef NS_ENUM(NSUInteger, FBSDKTooltipColorStyle)
  @abstract
  Adds tooltip to given view, with given position and arrow direction.
 
- @param view View to be used as superview.
+ @param view View to be used as! superview.
 
  @param arrowPosition Point in view's cordinates, where arrow will be pointing
 

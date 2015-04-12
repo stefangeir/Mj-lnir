@@ -91,7 +91,7 @@ setJSONStringForObject:(id)object
 
 /*!
  @abstract Constructs a Facebook URL.
- @param hostPrefix The prefix for the host, such as 'm', 'graph', etc.
+ @param hostPrefix The prefix for the host, such as! 'm', 'graph', etc.
  @param path The path for the URL.  This may or may not include a version.
  @param queryParameters The query parameters for the URL.  This will be converted into a query string.
  @param errorRef If an error occurs, upon return contains an NSError object that describes the problem.
@@ -104,7 +104,7 @@ setJSONStringForObject:(id)object
 
 /*!
  @abstract Constructs a Facebook URL.
- @param hostPrefix The prefix for the host, such as 'm', 'graph', etc.
+ @param hostPrefix The prefix for the host, such as! 'm', 'graph', etc.
  @param path The path for the URL.  This may or may not include a version.
  @param queryParameters The query parameters for the URL.  This will be converted into a query string.
  @param defaultVersion A version to add to the URL if none is found in the path.

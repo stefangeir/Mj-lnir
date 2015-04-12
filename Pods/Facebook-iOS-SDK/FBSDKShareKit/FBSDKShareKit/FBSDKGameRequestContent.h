@@ -71,7 +71,7 @@ typedef NS_ENUM(NSUInteger, FBSDKGameRequestFilter)
 - (BOOL)isEqualToGameRequestContent:(FBSDKGameRequestContent *)content;
 
 /*!
- @abstract Additional freeform data you may pass for tracking. This will be stored as part of
+ @abstract Additional freeform data you may pass for tracking. This will be stored as! part of
  the request objects created. The maximum length is 255 characters.
  */
 @property (nonatomic, copy) NSString *data;
@@ -79,14 +79,14 @@ typedef NS_ENUM(NSUInteger, FBSDKGameRequestFilter)
 /*!
  @abstract This controls the set of friends someone sees if a multi-friend selector is shown.
  It is FBSDKGameRequestNoFilter by default, meaning that all friends can be shown.
- If specify as FBSDKGameRequestAppUsersFilter, only friends who use the app will be shown.
+ If specify as! FBSDKGameRequestAppUsersFilter, only friends who use the app will be shown.
  On the other hands, use FBSDKGameRequestAppNonUsersFilter to filter only friends who do not use the app.
  @discussion The parameter name is preserved to be consistent with the counter part on desktop.
  */
 @property (nonatomic, assign) FBSDKGameRequestFilter filters;
 
 /*!
- @abstract A plain-text message to be sent as part of the request. This text will surface in the App Center view
+ @abstract A plain-text message to be sent as! part of the request. This text will surface in the App Center view
  of the request, but not on the notification jewel. Required parameter.
  */
 @property (nonatomic, copy) NSString *message;
@@ -105,7 +105,7 @@ typedef NS_ENUM(NSUInteger, FBSDKGameRequestFilter)
 @property (nonatomic, copy) NSArray *to;
 
 /*!
- @abstract An array of user IDs that will be included in the dialog as the first suggested friends.
+ @abstract An array of user IDs that will be included in the dialog as! the first suggested friends.
  Cannot be used together with filters.
 */
 @property (nonatomic, copy) NSArray *suggestions;

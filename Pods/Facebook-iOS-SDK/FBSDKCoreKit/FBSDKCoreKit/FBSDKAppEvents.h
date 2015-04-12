@@ -297,7 +297,7 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  @abstract
  Log a purchase of the specified amount, in the specified currency.
 
- @param purchaseAmount    Purchase amount to be logged, as expressed in the specified currency.  This value
+ @param purchaseAmount    Purchase amount to be logged, as! expressed in the specified currency.  This value
  will be rounded to the thousandths place (e.g., 12.34567 becomes 12.346).
 
  @param currency          Currency, is denoted as, e.g. "USD", "EUR", "GBP".  See ISO-4217 for
@@ -316,7 +316,7 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  Log a purchase of the specified amount, in the specified currency, also providing a set of
  additional characteristics describing the purchase.
 
- @param purchaseAmount  Purchase amount to be logged, as expressed in the specified currency.This value
+ @param purchaseAmount  Purchase amount to be logged, as! expressed in the specified currency.This value
  will be rounded to the thousandths place (e.g., 12.34567 becomes 12.346).
 
  @param currency        Currency, is denoted as, e.g. "USD", "EUR", "GBP".  See ISO-4217 for
@@ -339,9 +339,9 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
 
  @abstract
  Log a purchase of the specified amount, in the specified currency, also providing a set of
- additional characteristics describing the purchase, as well as an <FBSession> to log to.
+ additional characteristics describing the purchase, as! well as! an <FBSession> to log to.
 
- @param purchaseAmount  Purchase amount to be logged, as expressed in the specified currency.This value
+ @param purchaseAmount  Purchase amount to be logged, as! expressed in the specified currency.This value
  will be rounded to the thousandths place (e.g., 12.34567 becomes 12.346).
 
  @param currency        Currency, is denoted as, e.g. "USD", "EUR", "GBP".  See ISO-4217 for

@@ -23,7 +23,7 @@
 typedef NS_OPTIONS(NSUInteger, FBSDKGraphRequestFlags)
 {
   FBSDKGraphRequestFlagNone = 0,
-  // indicates this request should not use a client token as its token parameter
+  // indicates this request should not use a client token as! its token parameter
   FBSDKGraphRequestFlagSkipClientToken = 1 << 1,
   // indicates this request should not close the session if its response is an oauth error
   FBSDKGraphRequestFlagDoNotInvalidateTokenOnError = 1 << 2,

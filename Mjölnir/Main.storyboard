@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KsN-4s-Z24">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KsN-4s-Z24">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -795,7 +795,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="buttonLabel" destination="PBb-SQ-auR" id="ato-0q-dr3"/>
-                                    <segue destination="wnE-wP-YJQ" kind="show" identifier="segue.timetable" id="gyN-4y-ylX"/>
+                                    <segue destination="wnE-wP-YJQ" kind="show" identifier="segue.timetableForSelectedWeekday" id="gyN-4y-ylX"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -906,7 +906,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mQI-NO-FQm" id="Sfh-fa-dzO">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqH-Lk-hlN">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqH-Lk-hlN">
                                             <rect key="frame" x="76" y="86" width="483" height="15"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -919,12 +919,13 @@
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="0W8-QT-wNc"/>
                                                     <exclude reference="PeC-sh-r6n"/>
                                                     <exclude reference="vuG-nl-EVU"/>
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwp-Rs-uc7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwp-Rs-uc7">
                                             <rect key="frame" x="76" y="8" width="491" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="HCQ-58-1vm"/>
@@ -936,6 +937,7 @@
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="HCQ-58-1vm"/>
+                                                    <exclude reference="UcU-gX-LuD"/>
                                                 </mask>
                                             </variation>
                                         </label>
@@ -972,7 +974,7 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Message" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EB7-IZ-Le7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EB7-IZ-Le7">
                                             <rect key="frame" x="76" y="36" width="483" height="42"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -985,6 +987,7 @@
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="6nc-CX-YET"/>
+                                                    <exclude reference="Vsy-P5-5f6"/>
                                                 </mask>
                                             </variation>
                                         </label>

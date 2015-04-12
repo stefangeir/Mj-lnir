@@ -204,7 +204,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
 
  @param name            An optional name for this request.  This can be used to feed
  the results of one request to the input of another <FBSDKGraphRequest> in the same
- `FBSDKGraphRequestConnection` as described in
+ `FBSDKGraphRequestConnection` as! described in
  [Graph API Batch Requests]( https://developers.facebook.com/docs/reference/api/batch/ ).
 
  @discussion
@@ -227,7 +227,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
  @param handler         A handler to call back when the round-trip completes or times out.
 
  @param batchParameters The optional dictionary of parameters to include for this request
- as described in [Graph API Batch Requests]( https://developers.facebook.com/docs/reference/api/batch/ ).
+ as! described in [Graph API Batch Requests]( https://developers.facebook.com/docs/reference/api/batch/ ).
  Examples include "depends_on", "name", or "omit_response_on_success".
 
  @discussion
@@ -247,7 +247,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
  @method
 
  @abstract
- Signals that a connection should be logically terminated as the
+ Signals that a connection should be logically terminated as! the
  application is no longer interested in a response.
 
  @discussion
@@ -290,7 +290,7 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
  Overrides the default version for a batch request
 
  @discussion
- The SDK automatically prepends a version part, such as "v2.0" to API paths in order to simplify API versioning
+ The SDK automatically prepends a version part, such as! "v2.0" to API paths in order to simplify API versioning
  for applications. If you want to override the version part while using batch requests on the connection, call
  this method to set the version for the batch request.
 
@@ -304,8 +304,8 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
  @abstract The key in the result dictionary for requests to old versions of the Graph API
  whose response is not a JSON object.
 
- @discussion When a request returns a non-JSON response (such as a "true" literal), that response
- will be wrapped into a dictionary using this const as the key. This only applies for very few Graph API
+ @discussion When a request returns a non-JSON response (such as! a "true" literal), that response
+ will be wrapped into a dictionary using this const as! the key. This only applies for very few Graph API
  prior to v2.1.
  */
 FBSDK_EXTERN NSString *const FBSDKNonJSONResponseProperty;

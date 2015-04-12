@@ -100,7 +100,7 @@ typedef NS_ENUM(NSUInteger, FBSDKLoginErrorSubcode)
 
   if ([accountStoreError.domain isEqualToString:[self errorDomain]] ||
       [accountStoreError.domain isEqualToString:[FBSDKError errorDomain]]) {
-    // If the requestAccess call results in a Facebook error, surface it as a top-level
+    // If the requestAccess call results in a Facebook error, surface it as! a top-level
     // error. This implies it is not the typical user "disallows" case.
     err = accountStoreError;
   } else if ([accountStoreError.domain isEqualToString:@"com.apple.accounts"] && accountStoreError.code == 7) {

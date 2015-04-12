@@ -10,8 +10,6 @@ import UIKit
 
 
 let formatter = NSDateFormatter()
-let timetableSegueString: String = "segue.timetable"
-let todayString: String = "í dag"
 let placeholderImageNameString = "placeholder"
 
 struct WeekdaySelectSectionNumbers {
@@ -22,16 +20,17 @@ struct WeekdaySelectSectionNumbers {
 
 class MainCVC: UICollectionViewController {
     let datasource = MainCVCDatasource()
-	let delegate = MainCVCDelegate()
+    let delegate = MainCVCDelegate()
     var intToLongWeekdayNames = [Int:String]()
     var intToShortWeekdayNames = [Int:String]()
+    let timetableSegueString: String = "segue.timetableForSelectedWeekday"
+    let todayString: String = "í dag"
     
     func createWeekdays() -> (intToLongWeekdayDict:[Int:String], intToShortWeekdayDict:[Int:String], weekdays: [String]) {
         
-        
         // Fáum weekdays
-        var shortWeekdays = formatter.shortWeekdaySymbols as [String]
-        var longWeekdays = formatter.weekdaySymbols as [String]
+        var shortWeekdays = formatter.shortWeekdaySymbols as! [String]
+        var longWeekdays = formatter.weekdaySymbols as! [String]
         // Byrjum vikuna á mánudegi
         longWeekdays.append(longWeekdays.first!)
         longWeekdays.removeAtIndex(0)
@@ -69,18 +68,18 @@ class MainCVC: UICollectionViewController {
         for var i = 5; i < 7; i++ {
             weekendDays.append(weekdays[i])
         }
-        var today = ["í dag"]
+        var today = [todayString]
         datasource.buttons.updateValue(businessDays, forKey: WeekdaySelectSectionNumbers.businessDays)
         datasource.buttons.updateValue(weekendDays, forKey: WeekdaySelectSectionNumbers.weekendDays)
         datasource.buttons.updateValue(today, forKey: WeekdaySelectSectionNumbers.today)
         
-        // Stillum default stærð fyrir takkana
-        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: 100, height: 100)
-        }
+        // Stillum default stærð fyrir takkana - þarf ekki því delegate implementar sizeforitematindexpath
+        //        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
+        //            layout.itemSize = CGSize(width: 100, height: 100)
+        //        }
         
         delegate.controller = self
-		collectionView?.dataSource = datasource
+        collectionView?.dataSource = datasource
         collectionView?.delegate = delegate
         collectionView?.alwaysBounceVertical = true
     }
@@ -98,43 +97,39 @@ class MainCVC: UICollectionViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == timetableSegueString {
-            if let cell = sender as? MainCVCell {
-                if let indexPath = collectionView?.indexPathForCell(cell) {
-                    if let timetable = segue.destinationViewController as? TimetableClassesTVC {
-                        switch cell.buttonLabel.text! {
-                        case todayString:
-                            formatter.dateFormat = "EEE"
-                            let todayDate = NSDate()
-                            let todayString = formatter.stringFromDate(todayDate)
-                            var todayWeekdayInt: Int?
-                            
-                            for (key, daystring) in intToShortWeekdayNames {
-                                
-                                if todayString == daystring {
-                                    todayWeekdayInt = key
-                                }
-                            }
-                            
-                            timetable.selectedWeekday = todayWeekdayInt!
-                            timetable.title = intToLongWeekdayNames[timetable.selectedWeekday!]
-                        default:
-                            
-                            for (key, daystring) in intToShortWeekdayNames {
-                                
-                                if cell.buttonLabel.text! == daystring {
-                                    timetable.selectedWeekday = key
-                                }
-                            }
-                            timetable.title = intToLongWeekdayNames[timetable.selectedWeekday!]
-                        }
-                    }
-                }
-                
-            }
-        }
-    }
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		
+		if segue.identifier == timetableSegueString,
+			let cell = sender as? MainCVCell,
+			let indexPath = collectionView?.indexPathForCell(cell),
+			let timetable = segue.destinationViewController as? TimetableClassesTVC {
+				switch cell.buttonLabel.text! {
+				case todayString:
+					formatter.dateFormat = "EEE"
+					let todayDate = NSDate()
+					let todayString = formatter.stringFromDate(todayDate)
+					var todayWeekdayInt: Int?
+					
+					for (key, daystring) in intToShortWeekdayNames {
+						
+						if todayString == daystring {
+							todayWeekdayInt = key
+						}
+					}
+					
+					timetable.selectedWeekday = todayWeekdayInt!
+					timetable.title = intToLongWeekdayNames[timetable.selectedWeekday!]
+				default:
+					
+					for (key, daystring) in intToShortWeekdayNames {
+						
+						if cell.buttonLabel.text! == daystring {
+							timetable.selectedWeekday = key
+						}
+					}
+					timetable.title = intToLongWeekdayNames[timetable.selectedWeekday!]
+				}
+		}
+	}
 }

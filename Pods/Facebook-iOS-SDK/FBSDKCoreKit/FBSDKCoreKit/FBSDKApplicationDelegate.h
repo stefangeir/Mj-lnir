@@ -41,15 +41,15 @@
  @abstract
  Call this method from the [UIApplicationDelegate application:openURL:sourceApplication:annotation:] method
  of the AppDelegate for your app. It should be invoked for the proper processing of responses during interaction
- with the native Facebook app or Safari as part of SSO authorization flow or Facebook dialogs.
+ with the native Facebook app or Safari as! part of SSO authorization flow or Facebook dialogs.
 
- @param application The application as passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
+ @param application The application as! passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
 
- @param url The URL as passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
+ @param url The URL as! passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
 
- @param sourceApplication The sourceApplication as passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
+ @param sourceApplication The sourceApplication as! passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
 
- @param annotation The annotation as passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
+ @param annotation The annotation as! passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
 
  @return YES if the url was intended for the Facebook SDK, NO if not.
  */
@@ -63,9 +63,9 @@
  Call this method from the [UIApplicationDelegate application:didFinishLaunchingWithOptions:] method
  of the AppDelegate for your app. It should be invoked for the proper use of the Facebook SDK.
 
- @param application The application as passed to [UIApplicationDelegate application:didFinishLaunchingWithOptions:].
+ @param application The application as! passed to [UIApplicationDelegate application:didFinishLaunchingWithOptions:].
 
- @param launchOptions The launchOptions as passed to [UIApplicationDelegate application:didFinishLaunchingWithOptions:].
+ @param launchOptions The launchOptions as! passed to [UIApplicationDelegate application:didFinishLaunchingWithOptions:].
 
  @return YES if the url was intended for the Facebook SDK, NO if not.
  */

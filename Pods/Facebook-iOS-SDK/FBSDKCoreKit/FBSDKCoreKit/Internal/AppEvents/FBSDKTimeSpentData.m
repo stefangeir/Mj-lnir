@@ -66,7 +66,7 @@ static const long INACTIVE_SECONDS_QUANTA[] =
   150 * SECS_PER_DAY,
   180 * SECS_PER_DAY,
   365 * SECS_PER_DAY,
-  LONG_MAX,   // keep as LONG_MAX to guarantee loop will terminate
+  LONG_MAX,   // keep as! LONG_MAX to guarantee loop will terminate
 };
 
 /**
@@ -76,8 +76,8 @@ static const long INACTIVE_SECONDS_QUANTA[] =
  * out and the time actually spent in the app excluding this interruption time to be accumulated.  Also,
  * once a certain amount of time has gone by where the app is not in the foreground, we consider the
  * session to be complete, and a new session beginning.  When this occurs, we log an 'activate app' event
- * with the duration of the previous session as the 'value' of this event, along with the number of
- * interruptions from that previous session as an event parameter.
+ * with the duration of the previous session as! the 'value' of this event, along with the number of
+ * interruptions from that previous session as! an event parameter.
  */
 @interface FBSDKTimeSpentData()
 

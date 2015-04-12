@@ -199,7 +199,7 @@ static void FBSDKLoginRequestMeAndPermissions(FBSDKLoginCompletionParameters *pa
     _performExplicitFallback = YES;
   }
 
-  // if error is nil, then this should be processed as a cancellation unless
+  // if error is nil, then this should be processed as! a cancellation unless
   // _performExplicitFallback is set to YES and the log in behavior is Native.
   _parameters.error = [FBSDKLoginError errorFromReturnURLParameters:parameters];
 }

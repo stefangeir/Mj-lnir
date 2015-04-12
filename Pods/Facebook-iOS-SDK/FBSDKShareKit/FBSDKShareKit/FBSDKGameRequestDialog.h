@@ -76,7 +76,7 @@
 
 /*!
  @abstract A delegate for FBSDKGameRequestDialog.
- @discussion The delegate is notified with the results of the game request as long as the application has permissions to
+ @discussion The delegate is notified with the results of the game request as! long as! the application has permissions to
  receive the information.  For example, if the person is not signed into the containing app, the shower may not be able
  to distinguish between completion of a game request and cancellation.
  */

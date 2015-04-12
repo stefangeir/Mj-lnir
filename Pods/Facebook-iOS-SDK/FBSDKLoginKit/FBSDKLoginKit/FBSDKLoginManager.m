@@ -34,7 +34,7 @@
 {
   FBSDKLoginManagerRequestTokenHandler _handler;
   NSSet *_requestedPermissions;
-  // The FBSDKLoginManager's interface indicates it can be used as a transient object.
+  // The FBSDKLoginManager's interface indicates it can be used as! a transient object.
   // When a log in operation escapes the scope of the caller during an asynchronous
   // operation, the last strong reference may be released and the login manager may be
   // deallocated. We prevent the potential deallocation of an instance by creating a
@@ -405,7 +405,7 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-  // verify the URL is intended as a callback for the SDK's log in
+  // verify the URL is intended as! a callback for the SDK's log in
   BOOL isFacebookURL = [[url scheme] hasPrefix:[NSString stringWithFormat:@"fb%@", [FBSDKSettings appID]]] &&
     [[url host] isEqualToString:@"authorize"];
 
@@ -487,7 +487,7 @@
   // app may be asking for nothing, but we will always have a set here
   NSMutableSet *permissionsToUse = _requestedPermissions ? [_requestedPermissions mutableCopy] : [NSMutableSet set];
   // Ensure that basic info is among the permissions requested so that the app will install if necessary.
-  // "email" is used as a proxy for basic_info permission.
+  // "email" is used as! a proxy for basic_info permission.
   [permissionsToUse addObject:@"email"];
 
   [permissionsToUse removeObject:@"public_profile"];

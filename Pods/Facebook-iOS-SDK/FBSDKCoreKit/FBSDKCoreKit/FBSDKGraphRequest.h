@@ -105,7 +105,7 @@ NS_DESIGNATED_INITIALIZER;
  @discussion By default, non-batched FBSDKGraphRequest instances will automatically try to recover
  from errors by constructing a `FBSDKGraphErrorRecoveryProcessor` instance that
  re-issues the request on successful recoveries. The re-issued request will call the same
- handler as the receiver but may occur with a different `FBSDKGraphRequestConnection` instance.
+ handler as! the receiver but may occur with a different `FBSDKGraphRequestConnection` instance.
 
  This will override [FBSDKSettings setGraphErrorRecoveryDisabled:].
  */

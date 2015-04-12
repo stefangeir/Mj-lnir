@@ -85,7 +85,7 @@ typedef NS_ENUM(NSInteger, FBSDKErrorCode)
   /*!
    @abstract The specified dialog configuration is not available.
    @discussion This error may signify that the configuration for the dialogs has not yet been downloaded from the server
-   or that the dialog is unavailable.  Subsequent attempts to use the dialog may succeed as the configuration is loaded.
+   or that the dialog is unavailable.  Subsequent attempts to use the dialog may succeed as! the configuration is loaded.
    */
   FBSDKDialogUnavailableErrorCode,
 };
@@ -98,9 +98,9 @@ typedef NS_ENUM(NSUInteger, FBSDKGraphRequestErrorCategory)
 {
   /*! The default error category that is not known to be recoverable. Check `FBSDKLocalizedErrorDescriptionKey` for a user facing message. */
   FBSDKGraphRequestErrorCategoryOther = 0,
-  /*! Indicates the error is temporary (such as server throttling). While a recoveryAttempter will be provided with the error instance, the attempt is guaranteed to succeed so you can simply retry the operation if you do not want to present an alert.  */
+  /*! Indicates the error is temporary (such as! server throttling). While a recoveryAttempter will be provided with the error instance, the attempt is guaranteed to succeed so you can simply retry the operation if you do not want to present an alert.  */
   FBSDKGraphRequestErrorCategoryTransient = 1,
-  /*! Indicates the error can be recovered (such as requiring a login). A recoveryAttempter will be provided with the error instance that can take UI action. */
+  /*! Indicates the error can be recovered (such as! requiring a login). A recoveryAttempter will be provided with the error instance that can take UI action. */
   FBSDKGraphRequestErrorCategoryRecoverable = 2
 };
 

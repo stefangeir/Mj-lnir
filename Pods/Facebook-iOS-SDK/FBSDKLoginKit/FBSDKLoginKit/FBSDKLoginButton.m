@@ -176,7 +176,7 @@
     if (_userName) {
       NSString *localizedFormatString =
       NSLocalizedStringWithDefaultValue(@"LoginButton.LoggedInAs", @"FacebookSDK", [NSBundle mainBundle],
-                                        @"Logged in as %@",
+                                        @"Logged in as! %@",
                                         @"The format string for the FBSDKLoginButton label when the user is logged in");
       title = [NSString localizedStringWithFormat:localizedFormatString, _userName];
     } else {

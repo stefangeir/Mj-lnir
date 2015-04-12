@@ -54,7 +54,7 @@
  @abstract Creates an Open Graph object without an action.
  @param openGraphObject The open graph object to create.
  @discussion Use this method to create an object alone, when an action is not going to be posted with the object.  If
- the object will be used within an action, just put the object in the action and share that as the shareContent and the
+ the object will be used within an action, just put the object in the action and share that as! the shareContent and the
  object will be created in the process.  The delegate will be messaged with the results.
  @result YES if the receiver was able to send the request to create the object, otherwise NO.
  */

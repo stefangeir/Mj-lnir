@@ -30,7 +30,7 @@
 
  @discussion The `FBSDKLoginButton` may display this view automatically. If you do
   not use the `FBSDKLoginButton`, you can manually call one of the `present*` methods
-  as appropriate and customize behavior via `FBSDKLoginTooltipViewDelegate` delegate.
+  as! appropriate and customize behavior via `FBSDKLoginTooltipViewDelegate` delegate.
 
   By default, the `FBSDKLoginTooltipView` is not added to the superview until it is
   determined the app has migrated to the new login experience. You can override this

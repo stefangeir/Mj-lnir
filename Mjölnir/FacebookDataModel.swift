@@ -11,6 +11,7 @@ import UIKit
 struct FacebookNetworking {
     static let FetchedDataNotification = "FacebookDataModel successfully fetched data"
     static let ErrorFetchingDataNotification = "FacebookDataModel error while fetching data"
+    static let UserInfoKey = "Error"
 }
 
 class FacebookDataModel: NSObject
@@ -63,90 +64,46 @@ class FacebookDataModel: NSObject
                     let delimeter = "https://graph.facebook.com/v2.3/"
                     self.paginationNext = paginationPath.componentsSeparatedByString(delimeter).last
                 }
-                
-                
             } else {
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 let center = NSNotificationCenter.defaultCenter()
-                center.postNotificationName(FacebookNetworking.ErrorFetchingDataNotification, object: self, userInfo: ["Error": error])
+                center.postNotificationName(FacebookNetworking.ErrorFetchingDataNotification, object: self, userInfo: [FacebookNetworking.UserInfoKey: error])
             }
         })
         currentRequest?.start()
     }
     
-//        FBSDKGraphRequestConnection.startWithGraphPath(requestPath, completionHandler: { [unowned self] response, data, error in
-//            if error == nil {
-//
-//                self.retryCount = 0
-//                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-//                let jsonData = JSON(data)
-//                let center = NSNotificationCenter.defaultCenter()
-//                
-//                if let posts = jsonData["posts"]["data"].array {
-//                    if isInitialFetch {
-//                        self.jsonDataArray.removeAll(keepCapacity: true)
-//                    }
-//                    println(posts)
-//                    self.jsonDataArray += posts
-//                    center.postNotificationName(FacebookNetworking.FetchedDataNotification, object: self)
-//                    
-//                } else if let posts = jsonData["data"].array {
-//                    
-//                    if isInitialFetch {
-//                        self.jsonDataArray.removeAll(keepCapacity: true)
-//                    }
-//                    
-//                    self.jsonDataArray += posts
-//                    center.postNotificationName(FacebookNetworking.FetchedDataNotification, object: self)
-//                }
-//                if let paginationPath = jsonData["posts"]["paging"]["next"].string {
-//                    let delimeter = "https://graph.facebook.com/v2.2/"
-//                    self.paginationNext = paginationPath.componentsSeparatedByString(delimeter).last
-//                } else if let paginationPath = jsonData["paging"]["next"].string {
-//                    let delimeter = "https://graph.facebook.com/v2.2/"
-//                    self.paginationNext = paginationPath.componentsSeparatedByString(delimeter).last
-//                }
-//                
-//                
-//            } else {
-//                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-//                let center = NSNotificationCenter.defaultCenter()
-//                center.postNotificationName(FacebookNetworking.ErrorFetchingDataNotification, object: self, userInfo: ["Error": error])
-//            }
-//        })
-//    }
-    
-//    func checkForNewPosts() -> Bool {
-//        var thereAreNewPosts = false
-//        let requestPath = "Mjolnir.MMAclub?fields=posts.limit(1)"
-//        
-//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-//        lastRequestConnection = FBRequestConnection()
-//        let request = FBRequest(forGraphPath: requestPath)
-//        
-//        lastRequestConnection!.addRequest(request, completionHandler: { [unowned self] response, data, error in
-//            if error == nil {
-//                self.retryCount = 0
-//                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-//                var jsonData = JSON(data)
-//                
-//
-//                if let posts = jsonData["posts"]["data"].array {
-//                    posts
-//                    
-//                } else if let posts = jsonData["data"].array {
-//                    post += posts
-//                }
-//                
-//                
-//            } else {
-//                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-//                let center = NSNotificationCenter.defaultCenter()
-//                center.postNotificationName(FacebookNetworking.ErrorFetchingDataNotification, object: self, userInfo: ["Error": error])
-//            }
-//        })
-//        lastRequestConnection!.start()
-//        
-//        return thereAreNewPosts
-//    }
+    //    func checkForNewPosts() -> Bool {
+    //        var thereAreNewPosts = false
+    //        let requestPath = "Mjolnir.MMAclub?fields=posts.limit(1)"
+    //
+    //        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    //        lastRequestConnection = FBRequestConnection()
+    //        let request = FBRequest(forGraphPath: requestPath)
+    //
+    //        lastRequestConnection!.addRequest(request, completionHandler: { [unowned self] response, data, error in
+    //            if error == nil {
+    //                self.retryCount = 0
+    //                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    //                var jsonData = JSON(data)
+    //
+    //
+    //                if let posts = jsonData["posts"]["data"].array {
+    //                    posts
+    //
+    //                } else if let posts = jsonData["data"].array {
+    //                    post += posts
+    //                }
+    //
+    //
+    //            } else {
+    //                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    //                let center = NSNotificationCenter.defaultCenter()
+    //                center.postNotificationName(FacebookNetworking.ErrorFetchingDataNotification, object: self, userInfo: [FacebookNetworking.UserInfoKey: error])
+    //            }
+    //        })
+    //        lastRequestConnection!.start()
+    //        
+    //        return thereAreNewPosts
+    //    }
 }

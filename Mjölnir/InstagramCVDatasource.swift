@@ -49,12 +49,12 @@ class InstagramCVDatasource: NSObject, UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         if indexPath.row < datamodel.data.count {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.InstagramImageCellReuseIdentifier, forIndexPath: indexPath) as InstagramCVCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.InstagramImageCellReuseIdentifier, forIndexPath: indexPath) as! InstagramCVCell
             
             cell.media = datamodel.data[indexPath.row]
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.LoadingCellReuseIdentifier, forIndexPath: indexPath) as InstagramCVLoadingCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.LoadingCellReuseIdentifier, forIndexPath: indexPath) as! InstagramCVLoadingCell
             
             cell.backgroundColor = UIColor.clearColor()
             cell.label.textColor = UIColor.whiteColor()

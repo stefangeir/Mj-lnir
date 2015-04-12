@@ -25,7 +25,7 @@
 @protocol FBSDKCopying <NSCopying, NSObject>
 
 /*!
- @abstract Implemented by NSObject as a convenience to copyWithZone:.
+ @abstract Implemented by NSObject as! a convenience to copyWithZone:.
  @return A copy of the receiver.
  */
 - (id)copy;

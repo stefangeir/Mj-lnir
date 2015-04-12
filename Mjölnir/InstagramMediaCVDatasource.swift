@@ -37,32 +37,32 @@ class instagramMediaCVDatasource: NSObject, UICollectionViewDataSource
         
         if indexPath.section == 0 {
             
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(dateReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVDateCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(dateReuseIdentifier, forIndexPath: indexPath) as! InstagramMediaCVDateCell
             cell.dateString = getDateString(media.createdDate)
             return cell
         }
         else if indexPath.section == 1 {
             
             if media.isVideo {
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(videoReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVVideoCell
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(videoReuseIdentifier, forIndexPath: indexPath) as! InstagramMediaCVVideoCell
                 cell.media = media
                 return cell
             } else {
-                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(imageReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVImageCell
+                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(imageReuseIdentifier, forIndexPath: indexPath) as! InstagramMediaCVImageCell
                 cell.media = media
                 return cell
             }
             
         } else if indexPath.section == 2 {
             
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(likesReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVLikesCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(likesReuseIdentifier, forIndexPath: indexPath) as! InstagramMediaCVLikesCell
             
             cell.numberOfLikes = media.likesCount
             return cell
         }
             
         else if indexPath.section == 3 && media.caption.text != nil {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVCommentCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as! InstagramMediaCVCommentCell
             
             cell.isCaption = true
             cell.comment = media.caption
@@ -70,7 +70,7 @@ class instagramMediaCVDatasource: NSObject, UICollectionViewDataSource
             return cell
         } else {
             
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as InstagramMediaCVCommentCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(commentReuseIdentifier, forIndexPath: indexPath) as! InstagramMediaCVCommentCell
             
             var row = indexPath.section - 3 // -3 because of date, image, likes
             if media.caption.text != nil {

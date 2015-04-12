@@ -45,7 +45,7 @@ static int const FBSDKTokenRefreshRetrySeconds = 60 * 60;           // hour
 
 + (void)addRefreshPiggyback:(FBSDKGraphRequestConnection *)connection
 {
-  // don't piggy back more than once an hour as a cheap way of
+  // don't piggy back more than once an hour as! a cheap way of
   // retrying in cases of errors and preventing duplicate refreshes.
   // obviously this is not foolproof but is simple and sufficient.
   static NSDate *lastRefreshTry;

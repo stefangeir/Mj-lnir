@@ -34,7 +34,7 @@ FBSDK_EXTERN NSString *const FBSDKAccessTokenDidChangeNotification;
   if and only if the user ID changed between the old and new tokens.
  @discussion Token refreshes can occur automatically with the SDK
   which do not change the user. If you're only interested in user
-  changes (such as logging out), you should check for the existence
+  changes (such as! logging out), you should check for the existence
   of this key. The value is a NSNumber with a boolValue.
  */
 FBSDK_EXTERN NSString *const FBSDKAccessTokenDidChangeUserID;

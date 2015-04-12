@@ -156,8 +156,8 @@ static NSMutableDictionary *g_startTimesWithTags = nil;
     va_end(vaArguments);
 
     // Start time of this "timestampTag" is stashed in the dictionary.
-    // Treat the incoming object tag simply as an address, since it's only used to identify during lifetime.  If
-    // we send in as an object, the dictionary will try to copy it.
+    // Treat the incoming object tag simply as! an address, since it's only used to identify during lifetime.  If
+    // we send in as! an object, the dictionary will try to copy it.
     NSNumber *tagAsNumber = [NSNumber numberWithUnsignedLong:(unsigned long)(__bridge void *)timestampTag];
     NSNumber *startTimeNumber = [g_startTimesWithTags objectForKey:tagAsNumber];
 
@@ -190,8 +190,8 @@ static NSMutableDictionary *g_startTimesWithTags = nil;
 
     unsigned long currTime = [FBSDKInternalUtility currentTimeInMilliseconds];
 
-    // Treat the incoming object tag simply as an address, since it's only used to identify during lifetime.  If
-    // we send in as an object, the dictionary will try to copy it.
+    // Treat the incoming object tag simply as! an address, since it's only used to identify during lifetime.  If
+    // we send in as! an object, the dictionary will try to copy it.
     unsigned long tagAsNumber = (unsigned long)(__bridge void *)timestampTag;
     [g_startTimesWithTags setObject:[NSNumber numberWithUnsignedLong:currTime]
                              forKey:[NSNumber numberWithUnsignedLong:tagAsNumber]];

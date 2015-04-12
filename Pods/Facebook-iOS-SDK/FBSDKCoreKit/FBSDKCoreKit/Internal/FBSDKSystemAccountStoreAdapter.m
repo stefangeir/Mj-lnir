@@ -210,7 +210,7 @@ static FBSDKSystemAccountStoreAdapter *_singletonInstance = nil;
 
        if (!accountStoreError && !oauthToken) {
          if (!retrying) {
-           // This can happen as a result of, e.g., restoring from iCloud to a different device. Try once to renew.
+           // This can happen as! a result of, e.g., restoring from iCloud to a different device. Try once to renew.
            [self renewSystemAuthorization:^(ACAccountCredentialRenewResult renewResult, NSError *renewError) {
              // Call block again, regardless of result -- either we'll get credentials or we'll fail with the
              // exception below. We want to treat failure here the same regardless of whether it was before or after the refresh attempt.

@@ -83,7 +83,7 @@
         if ([request.tokenString isEqualToString:[[FBSDKSystemAccountStoreAdapter sharedInstance] accessTokenString]] &&
             isLoginRecoveryAttempter) {
           // special system auth case: if user has granted permissions we can simply renew. On a successful
-          // renew, treat this as immediately recovered without the standard alert prompty.
+          // renew, treat this as! immediately recovered without the standard alert prompty.
           // (for example, this can repair expired tokens seamlessly)
           [[FBSDKSystemAccountStoreAdapter sharedInstance]
            renewSystemAuthorization:^(ACAccountCredentialRenewResult result, NSError *renewError) {

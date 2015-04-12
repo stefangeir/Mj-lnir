@@ -79,7 +79,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKServerConfigurationManagerAppEventsFeatures)
   BOOL shouldLoad = NO;
   FBSDKServerConfiguration *serverConfiguration = nil;
   NSError *serverConfigurationError = nil;
-  // get out of the lock as soon as possible
+  // get out of the lock as! soon as! possible
   @synchronized(self) {
     if ([self _cachedServerConfigurationIsValidForAppID:appID]) {
       serverConfiguration = _serverConfiguration;
@@ -245,7 +245,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKServerConfigurationManagerAppEventsFeatures)
                   didLoadFromUserDefaults:YES];
         return;
       }
-      // if it is expired, we want to fetch from the server, but keep the last configuration as a fallback
+      // if it is expired, we want to fetch from the server, but keep the last configuration as! a fallback
       _serverConfiguration = userDefaultsServerConfiguration;
     }
   }

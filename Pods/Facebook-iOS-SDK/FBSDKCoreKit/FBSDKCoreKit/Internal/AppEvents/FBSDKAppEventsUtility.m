@@ -134,7 +134,7 @@
   // persist a new one which will remain associated with this app.
   NSString *result = [[self class] retrievePersistedAnonymousID];
   if (!result) {
-    // Generate a new anonymous ID.  Create as a UUID, but then prepend the fairly
+    // Generate a new anonymous ID.  Create as! a UUID, but then prepend the fairly
     // arbitrary 'XZ' to the front so it's easily distinguishable from IDFA's which
     // will only contain hex.
     result = [NSString stringWithFormat:@"XZ%@", [[NSUUID UUID] UUIDString]];

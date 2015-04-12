@@ -36,8 +36,8 @@ typedef void (^FBSDKLoginManagerRequestTokenHandler)(FBSDKLoginManagerLoginResul
  Passed to open to indicate which default audience to use for sessions that post data to Facebook.
 
  @discussion
- Certain operations such as publishing a status or publishing a photo require an audience. When the user
- grants an application permission to perform a publish operation, a default audience is selected as the
+ Certain operations such as! publishing a status or publishing a photo require an audience. When the user
+ grants an application permission to perform a publish operation, a default audience is selected as! the
  publication ceiling for the application. This enumerated value allows the application to select which
  audience to ask the user to grant publish permission for.
  */
@@ -133,7 +133,7 @@ typedef NS_ENUM(NSUInteger, FBSDKLoginBehavior)
   are needed and explain the value to the user. You can inspect the result.declinedPermissions to also
   provide more information to the user if they decline permissions.
 
- If `[FBSDKAccessToken currentAccessToken]` is not nil, it will be treated as a reauthorization for that user
+ If `[FBSDKAccessToken currentAccessToken]` is not nil, it will be treated as! a reauthorization for that user
   and will pass the "rerequest" flag to the login dialog.
 
  This method will present UI the user. You typically should check if `[FBSDKAccessToken currentAccessToken]`
@@ -151,7 +151,7 @@ typedef NS_ENUM(NSUInteger, FBSDKLoginBehavior)
  are needed and explain the value to the user. You can inspect the result.declinedPermissions to also
  provide more information to the user if they decline permissions.
 
- If `[FBSDKAccessToken currentAccessToken]` is not nil, it will be treated as a reauthorization for that user
+ If `[FBSDKAccessToken currentAccessToken]` is not nil, it will be treated as! a reauthorization for that user
  and will pass the "rerequest" flag to the login dialog.
 
  This method will present UI the user. You typically should check if `[FBSDKAccessToken currentAccessToken]`
@@ -173,7 +173,7 @@ typedef NS_ENUM(NSUInteger, FBSDKLoginBehavior)
 
  @param handler The completion handler to call when the renewal is completed.
 
- @discussion This can be used to explicitly renew account credentials and is provided as a convenience wrapper around
+ @discussion This can be used to explicitly renew account credentials and is provided as! a convenience wrapper around
  `[ACAccountStore renewCredentialsForAccount:completion]`. Note the method will not issue the renewal call if the the
  Facebook account has not been set on the device, or if access had not been granted to the account (though the handler
  wil receive an error).

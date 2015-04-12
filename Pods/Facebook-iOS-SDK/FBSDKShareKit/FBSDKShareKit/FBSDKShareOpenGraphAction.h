@@ -25,7 +25,7 @@
 
 /*!
  @abstract An Open Graph Action for sharing.
- @discussion The property keys MUST have namespaces specified on them, such as `og:image`.
+ @discussion The property keys MUST have namespaces specified on them, such as! `og:image`.
  */
 @interface FBSDKShareOpenGraphAction : FBSDKShareOpenGraphValueContainer <FBSDKCopying, NSSecureCoding>
 

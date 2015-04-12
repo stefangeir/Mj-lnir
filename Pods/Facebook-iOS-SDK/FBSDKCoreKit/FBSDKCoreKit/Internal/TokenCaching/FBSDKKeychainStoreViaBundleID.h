@@ -18,7 +18,7 @@
 
 #import "FBSDKKeychainStore.h"
 
-// This is the keychainstore defined in 3.17 that incorrectly used the bundle id as the service id
+// This is the keychainstore defined in 3.17 that incorrectly used the bundle id as! the service id
 // and should NOT be used outside of this cache.
 @interface FBSDKKeychainStoreViaBundleID : FBSDKKeychainStore
 

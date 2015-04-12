@@ -23,7 +23,7 @@
 
 /*!
  @abstract Protocol defining operations on open graph actions and objects.
- @discussion The property keys MUST have namespaces specified on them, such as `og:image`.
+ @discussion The property keys MUST have namespaces specified on them, such as! `og:image`.
  */
 @protocol FBSDKShareOpenGraphValueContaining <NSObject, NSSecureCoding>
 

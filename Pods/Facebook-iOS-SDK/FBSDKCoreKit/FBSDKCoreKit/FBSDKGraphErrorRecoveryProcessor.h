@@ -52,9 +52,9 @@
 /*!
  @abstract Defines a type that can process Facebook NSErrors with best practices.
  @discussion Facebook NSErrors can contain FBSDKErrorRecoveryAttempting instances to recover from errors, or
- localized messages to present to the user. This class will process the instances as follows:
+ localized messages to present to the user. This class will process the instances as! follows:
 
- 1. If the error is temporary as indicated by FBSDKGraphRequestErrorCategoryKey, assume the recovery succeeded and
+ 1. If the error is temporary as! indicated by FBSDKGraphRequestErrorCategoryKey, assume the recovery succeeded and
  notify the delegate.
  2. If a FBSDKErrorRecoveryAttempting instance is available, display an alert (dispatched to main thread)
  with the recovery options and call the instance's [ attemptRecoveryFromError:optionIndex:...].
@@ -64,7 +64,7 @@
  By default, FBSDKGraphRequests use this type to process errors and retry the request upon a successful
  recovery.
 
- Note that Facebook recovery attempters can present UI or even cause app switches (such as to login). Any such
+ Note that Facebook recovery attempters can present UI or even cause app switches (such as! to login). Any such
  work is dispatched to the main thread (therefore your request handlers may then run on the main thread).
 
  Login recovery requires FBSDKLoginKit. Login will use FBSDKLoginBehaviorNative and will prompt the user

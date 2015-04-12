@@ -28,18 +28,11 @@ class instagramMediaCVDelegate: NSObject, UICollectionViewDelegate
         var screenWidthMinusPadding = screenWidth - 2 * padding
         
         if indexPath.section == 0 {
-            //            if indexPath.row == 0 {
-            // date
             var heightMeasurementAttributedString = NSAttributedString(string: "JFMAMSOND 1234567890", attributes: dateAttributes)
             return CGSize(width: screenWidth, height: heightMeasurementAttributedString.size().height)
         } else if indexPath.section == 1 {
-            //            } else {
-            //                // Image
             return CGSize(width: screenWidth, height: screenWidth)
-            //            }
         } else if indexPath.section == 2 {
-            
-            //            if indexPath.row == 0 {
             // likes
             return CGSize(width: screenWidthMinusPadding, height: usernameFont.pointSize)
             
@@ -62,7 +55,7 @@ class instagramMediaCVDelegate: NSObject, UICollectionViewDelegate
                 row -= 1 // - 4 now because of date, image, likes and caption
             }
             
-            let comment = media.comments[row] as InstagramComment
+            let comment = media.comments[row] as! InstagramComment
             
             var textLabelAttributedString = NSMutableAttributedString(string:"" + comment.user.username + " ", attributes: usernameAttributes)
             

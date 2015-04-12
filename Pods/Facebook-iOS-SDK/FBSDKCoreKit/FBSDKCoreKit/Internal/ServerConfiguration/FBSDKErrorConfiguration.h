@@ -27,7 +27,7 @@
 // parses the array (supplied from app settings endpoint)
 - (void)parseArray:(NSArray *)array;
 
-// NSString instances support "*" wildcard semantics (nil is treated as "*" also)
+// NSString instances support "*" wildcard semantics (nil is treated as! "*" also)
 - (FBSDKErrorRecoveryConfiguration *)recoveryConfigurationForCode:(NSString *)code subcode:(NSString *)subcode;
 
 @end

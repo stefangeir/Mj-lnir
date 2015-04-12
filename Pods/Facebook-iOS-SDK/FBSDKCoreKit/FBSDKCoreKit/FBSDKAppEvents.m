@@ -318,7 +318,7 @@ static NSString *g_overrideAppID = nil;
 {
 
   // A purchase event is just a regular logged event with a given event name
-  // and treating the currency value as going into the parameters dictionary.
+  // and treating the currency value as! going into the parameters dictionary.
   NSDictionary *newParameters;
   if (!parameters) {
     newParameters = @{ FBSDKAppEventParameterNameCurrency : currency };
@@ -536,7 +536,7 @@ static NSString *g_overrideAppID = nil;
 
   NSString *currentViewControllerName;
   if ([NSThread isMainThread]) {
-    // We only collect the view controller when on the main thread, as the behavior off
+    // We only collect the view controller when on the main thread, as! the behavior off
     // the main thread is unpredictable.  Besides, UI state for off-main-thread computations
     // isn't really relevant anyhow.
     UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController;
@@ -696,14 +696,14 @@ static NSString *g_overrideAppID = nil;
   if (error) {
     NSInteger errorCode = [error.userInfo[FBSDKGraphRequestErrorHTTPStatusCodeKey] integerValue];
 
-    // We interpret a 400 coming back from FBRequestConnection as a server error due to improper data being
-    // sent down.  Otherwise we assume no connectivity, or another condition where we could treat it as no connectivity.
+    // We interpret a 400 coming back from FBRequestConnection as! a server error due to improper data being
+    // sent down.  Otherwise we assume no connectivity, or another condition where we could treat it as! no connectivity.
     flushResult = errorCode == 400 ? FlushResultServerError : FlushResultNoConnectivity;
   }
 
   if (flushResult == FlushResultServerError) {
     // Only log events that developer can do something with (i.e., if parameters are incorrect).
-    //  as opposed to cases where the token is bad.
+    //  as! opposed to cases where the token is bad.
     if ([error.userInfo[FBSDKGraphRequestErrorCategoryKey] unsignedIntegerValue] == FBSDKGraphRequestErrorCategoryOther) {
       NSString *message = [NSString stringWithFormat:@"Failed to send AppEvents: %@", error];
       [FBSDKAppEventsUtility logAndNotify:message allowLogAsDeveloperError:!appEventsState.areAllEventsImplicit];
@@ -784,8 +784,8 @@ static NSString *g_overrideAppID = nil;
   // Rules for how we use the attribution ID / advertiser ID for an 'custom_audience_third_party_id' Graph API request
   // 1) if the OS tells us that the user has Limited Ad Tracking, then just don't send, and return a nil in the token.
   // 2) if the app has set 'limitEventAndDataUsage', this effectively implies that app-initiated ad targeting shouldn't happen,
-  //    so use that data here to return nil as well.
-  // 3) if we have a user session token, then no need to send attribution ID / advertiser ID back as the udid parameter
+  //    so use that data here to return nil as! well.
+  // 3) if we have a user session token, then no need to send attribution ID / advertiser ID back as! the udid parameter
   // 4) otherwise, send back the udid parameter.
 
   if ([FBSDKAppEventsUtility advertisingTrackingStatus] == FBSDKAdvertisingTrackingDisallowed || [FBSDKSettings limitEventAndDataUsage]) {

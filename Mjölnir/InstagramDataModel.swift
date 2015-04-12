@@ -13,6 +13,7 @@ struct InstagramNetworking {
     static let UserDidLogout = "User Was Logged Out"
     static let FetchedInstagramDataNotification = "Fetched Instagram Data"
     static let ErrorFetchingInstagramDataNotification = "Error Fetching Instagram Data"
+    static let UserInfoKey = "Error"
 }
 
 class InstagramDataModel: NSObject
@@ -84,7 +85,7 @@ class InstagramDataModel: NSObject
             maxId: currentPaginationInfo.nextMaxId,
             withSuccess: { [unowned self] feed, paginationInfo in
                 
-                self.data += feed as [InstagramMedia]
+                self.data += feed as! [InstagramMedia]
                 NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.FetchedInstagramDataNotification, object: self)
                 if (paginationInfo != nil) {
                     self.currentPaginationInfo = paginationInfo
@@ -97,7 +98,7 @@ class InstagramDataModel: NSObject
                 
                 //TODO: Display the error, only set false if user is not authenticated
                 self.userIsLoggedIn = false
-                NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.ErrorFetchingInstagramDataNotification, object: self, userInfo: ["Error" : error])
+                NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.ErrorFetchingInstagramDataNotification, object: self, userInfo: [InstagramNetworking.UserInfoKey : error])
         })
 
     }
@@ -108,7 +109,7 @@ class InstagramDataModel: NSObject
             maxId: currentPaginationInfo.nextMaxId,
             withSuccess: { [unowned self] feed, paginationInfo in
                 
-                self.data += feed as [InstagramMedia]
+                self.data += feed as! [InstagramMedia]
                 NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.FetchedInstagramDataNotification, object: self)
                 if (paginationInfo != nil) {
                     self.currentPaginationInfo = paginationInfo
@@ -121,7 +122,7 @@ class InstagramDataModel: NSObject
                 
                 //TODO: Display the error, only set false if user is not authenticated
                 self.userIsLoggedIn = false
-                NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.ErrorFetchingInstagramDataNotification, object: self, userInfo: ["Error" : error])
+                NSNotificationCenter.defaultCenter().postNotificationName(InstagramNetworking.ErrorFetchingInstagramDataNotification, object: self, userInfo: [InstagramNetworking.UserInfoKey : error])
                 
         })
     }
