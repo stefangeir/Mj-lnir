@@ -25,7 +25,7 @@ class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
     var userDenied = false
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        var URLString = request.URL.absoluteString
+        var URLString = request.URL!.absoluteString
         
         if URLString!.hasPrefix(InstagramEngine.sharedEngine().appRedirectURL) {
             

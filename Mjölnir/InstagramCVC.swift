@@ -43,7 +43,7 @@ class InstagramCVC: UICollectionViewController {
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             (layout.itemSize, layout.minimumInteritemSpacing, layout.minimumLineSpacing) = getItemSizeAndSpacing()
         }
-        //updateLoginButton()
+        updateLoginButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,7 +66,7 @@ class InstagramCVC: UICollectionViewController {
     func errorFetchingMedia(note: NSNotification) {
         
         if let errorDict = note.userInfo as? [String : NSError] {
-            if let error = errorDict["Error"] {
+            if let error = errorDict[InstagramNetworking.UserInfoKey] {
                 let alertController = UIAlertController(title: "Vesen: ", message:
                     error.localizedDescription, preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "Flott", style: .Default,handler: nil))
@@ -162,6 +162,8 @@ class InstagramCVC: UICollectionViewController {
     
     @IBAction func userLoggedIn(segue: UIStoryboardSegue) {
         if !userDenied {
+            InstagramEngine.sharedEngine().accessToken = nil
+            updateLoginButton()
             refresh()
         }
     }
@@ -174,8 +176,6 @@ class InstagramCVC: UICollectionViewController {
                 if let cell = sender as? InstagramCVCell {
                     let indexPath = collectionView!.indexPathForCell(cell)
                     instagramMedia.media = datasource.datamodel.data[indexPath!.row]
-                    instagramMedia.navigationController?.navigationBarHidden = false
-                    instagramMedia.navigationController?.hidesBarsOnSwipe = false
                 }
             }
         }

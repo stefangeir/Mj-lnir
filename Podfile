@@ -1,4 +1,6 @@
-platform :ios, '7.0'
+platform :ios, '8.0'
+
+pod 'AFNetworking'
+pod 'InstagramKit'
 pod 'MWFeedParser'
-pod "AFNetworking", "~> 2.0"
-pod 'InstagramKit', '3.5.0'
+pod 'Facebook-iOS-SDK'

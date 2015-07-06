@@ -48,7 +48,7 @@ class ShownClassesTVC: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(shownClassesCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(shownClassesCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
 
         var className = allClasses[indexPath.row]
         if let dict = updatedShownClasses {

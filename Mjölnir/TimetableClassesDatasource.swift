@@ -12,24 +12,26 @@ class TimetableClassesDatasource: NSObject, UITableViewDataSource
 {
 	
     let data = TimetableDataModel()
-    weak var controller: TimetableClassesTVC?
+    weak var controller: TimetableClassesTVC!
     
     var selectedWeekday: Int?
+    let timetableReuseIdentifier = "reusable.timetableClassCell"
+    let timetableSectionTitles = ["Salur 1", "Salur 2", "Salur 3"]
     private var classesForRoom = [Int:[String:String]]()
     private var timesForRoom = [Int:[String]]()
 	
 	
 	
 	func updateModel() {
-        classesForRoom = [1:data.getClassesForWeekday(selectedWeekday!, theRoom: 1),
-            2: data.getClassesForWeekday(selectedWeekday!, theRoom: 2),
-            3: data.getClassesForWeekday(selectedWeekday!, theRoom: 3)]
+        classesForRoom = [1:data.getClassesForWeekday(selectedWeekday!, inRoom: 1),
+            2: data.getClassesForWeekday(selectedWeekday!, inRoom: 2),
+            3: data.getClassesForWeekday(selectedWeekday!, inRoom: 3)]
         
         timesForRoom = [1:[String](classesForRoom[1]!.keys).sorted(<),
             2:[String](classesForRoom[2]!.keys).sorted(<),
             3:[String](classesForRoom[3]!.keys).sorted(<)]
         
-        controller!.tableView.reloadData()
+        controller.tableView.reloadData()
 	}
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -51,7 +53,7 @@ class TimetableClassesDatasource: NSObject, UITableViewDataSource
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCellWithIdentifier(timetableReusableCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier(timetableReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
         let roomNumber = indexPath.section + 1
         let classNumber = indexPath.row
         

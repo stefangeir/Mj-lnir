@@ -13,7 +13,7 @@ class MainCVCDatasource: NSObject, UICollectionViewDataSource
     
     var buttons = [Int:[String]]()
     let buttonReuseIdentifier = "reusable.buttonCell"
-    let sectionReuseIdentifier = "reusable.MainViewSectionHeader"
+    let sectionHeaderReuseIdentifier = "reusable.MainViewSectionHeader"
 
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		
@@ -22,8 +22,8 @@ class MainCVCDatasource: NSObject, UICollectionViewDataSource
 
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if let count = buttons[section]?.count {
-            return count
+        if let numberOfButtons = buttons[section]?.count {
+            return numberOfButtons
         }
         return 0
     }
@@ -31,7 +31,7 @@ class MainCVCDatasource: NSObject, UICollectionViewDataSource
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(buttonReuseIdentifier, forIndexPath: indexPath) as MainCVCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(buttonReuseIdentifier, forIndexPath: indexPath) as! MainCVCell
         
         cell.text = buttons[indexPath.section]![indexPath.row]
 		return cell
@@ -40,8 +40,8 @@ class MainCVCDatasource: NSObject, UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         var headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
-            withReuseIdentifier: sectionReuseIdentifier,
-            forIndexPath: indexPath) as MainCVSectionHeader
+            withReuseIdentifier: sectionHeaderReuseIdentifier,
+            forIndexPath: indexPath) as! MainCVSectionHeader
         
         // Parallax effects
         var verticalMotionEffect : UIInterpolatingMotionEffect =

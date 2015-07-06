@@ -28,21 +28,39 @@ class RSSTableViewCell: UITableViewCell
         if let item = item {
             titleLabel.text = item.title
             timeLabel.text = getDateString(item.date)
-            myImageView.setImageWithURL(getImageURLFromString(item.summary), placeholderImage: UIImage(named: placeholderImageNameString))
+            if couldExtractImageURL(item.summary) {
+                if let url = extractedImageURL {
+                    myImageView.setImageWithURL(url, placeholderImage: UIImage(named: placeholderImageNameString))
+                }
+            }
         }
         backgroundColor = UIColor.blackColor()
-        
     }
     
-    func getImageURLFromString (fromString: String) -> NSURL {
-        
+    var extractedImageURL: NSURL?
+    
+    func couldExtractImageURL(fromString: String) -> Bool
+    {
         var imageString = String()
+        var stringArray = fromString.componentsSeparatedByString("<p><img src=\"")
         
-        imageString = fromString.componentsSeparatedByString("<p><img src=\"")[1]
-        imageString = imageString.componentsSeparatedByString(".jpg")[0]
-        imageString += ".jpg"
-        
-        return NSURL(string: imageString)!
+        if stringArray.count > 1 {
+            imageString = fromString.componentsSeparatedByString("<p><img src=\"")[1]
+            if imageString.lowercaseString.rangeOfString(".jpg") != nil {
+                stringArray = imageString.componentsSeparatedByString(".jpg")
+                if let imageURL = stringArray.first {
+                    extractedImageURL = NSURL(string: imageURL + ".jpg")
+                    return true
+                }
+            } else if imageString.lowercaseString.rangeOfString(".png") != nil {
+                stringArray = imageString.componentsSeparatedByString(".png")
+                if let imageURL = stringArray.first {
+                    extractedImageURL = NSURL(string: imageURL + ".png")
+                    return true
+                }
+            }
+        }
+        return false
     }
     
     private func getDateString (fromDate: NSDate) -> String {

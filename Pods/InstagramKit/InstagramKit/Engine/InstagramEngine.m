@@ -183,7 +183,7 @@ typedef enum
 {
 
     NSURL *appRedirectURL = [NSURL URLWithString:self.appRedirectURL];
-    
+
     if (![appRedirectURL.scheme isEqual:url.scheme] || ![appRedirectURL.host isEqual:url.host])
     {
         return NO;

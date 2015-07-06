@@ -34,68 +34,17 @@ class FacebookPostTVCell: UITableViewCell
         
         //fbPostImageView.contentMode = UIViewContentMode.ScaleAspectFit
         if let post = self.post {
+            
             if post.PictureUrl != nil {
                 let url = NSURL(string: post.PictureUrl!)
                 fbPostImageView.setImageWithURL(url, placeholderImage: UIImage(named: placeholderImageNameString))
-            } else {
-                //                fbPostImageView.image = UIImage(named: placeholderImageNameString)
-                fbPostImageView.image = nil
             }
             
-            if let story = post.Story {
-                fbPostTitleLabel.text = story
-            } else if let postDescription = post.Description {
-                fbPostTitleLabel.text = postDescription
-                if let caption = post.Caption {
-                    fbPostTitleLabel.text = postDescription + " - \(caption)"
-                }
-            } else {
-                fbPostTitleLabel.text = nil
-            }
-            
-            if let message = post.Message {
-                fbPostLabel.text = message
-            } else {
-                fbPostLabel.text = nil // Þarf þetta?
-            }
+            fbPostTitleLabel.text = post.Title
+            fbPostLabel.text = post.Message
             
             backgroundColor = UIColor.blackColor()
-            let date = NSDate(fromInternetDateTimeString: post.Date, formatHint: DateFormatHintRFC3339)
-            fbPostTimeLabel.text = getDateString(date)
+            fbPostTimeLabel.text = post.CreatedTime
         }
-    }
-    
-    private func getDateString (fromDate: NSDate) -> String {
-        
-        let secondsSince = Int(-fromDate.timeIntervalSinceNow)
-        
-        let seconds = secondsSince % 60
-        let minutes = (secondsSince / 60) % 60
-        let hours = secondsSince / 3600
-        let strHours = hours > 9 ? String(hours) : String(hours)
-        let strMinutes = minutes > 9 ? String(minutes) : String(minutes)
-        let strSeconds = seconds > 9 ? String(seconds) : String(seconds)
-        
-        var returnString = String()
-        
-        if hours < 1 {
-            if minutes == 0 {
-                returnString = "Núna"
-            } else {
-                returnString = "Fyrir \(strMinutes) mínútum"
-            }
-        } else if hours < 10 {
-            if minutes == 0 {
-                returnString = "Fyrir \(strHours) klst"
-            } else {
-                returnString = "Fyrir \(strHours) klst og \(strMinutes) mínútum"
-            }
-        } else {
-            formatter.dateFormat = "dd. MMM yyyy"
-            return formatter.stringFromDate(fromDate)
-        }
-        
-        return returnString
-        
     }
 }

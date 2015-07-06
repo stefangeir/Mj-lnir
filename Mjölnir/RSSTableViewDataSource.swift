@@ -46,7 +46,7 @@ class RSSTableViewDataSource: NSObject, UITableViewDataSource
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCellWithIdentifier(reusableNewsCellIdentifier, forIndexPath: indexPath) as RSSTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier(reusableNewsCellIdentifier, forIndexPath: indexPath) as! RSSTableViewCell
         if indexPath.row < datamodel.data.count {
             cell.item = datamodel.data[indexPath.row]
         }

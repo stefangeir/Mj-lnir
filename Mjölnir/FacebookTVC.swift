@@ -10,12 +10,12 @@ import UIKit
 
 let openInFacebookAppUserDefaultsString = "MjolnirOpenFacebookPostsInFacebookApp"
 
-class FacebookTVC: UITableViewController, FBLoginViewDelegate {
+class FacebookTVC: UITableViewController, FBSDKLoginButtonDelegate {
     
     let datasource = FacebookTVDatasource()
     let delegate = FacebookTVDelegate()
     
-    var myLoginView: FBLoginView! {
+    var myLoginView: FBSDKLoginButton! {
         didSet {
                 myLoginView.delegate = self
         }
@@ -30,13 +30,17 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
         tableView.delegate = delegate
         
         // FBLoginView as Header. Footer to hide pointless rows of table
-        myLoginView = FBLoginView()
-        myLoginView.bounds.size.width = tableView.bounds.size.width
+        myLoginView = FBSDKLoginButton(frame: CGRectZero)
+        // Prufa seinna(requires extra error handling..): myLoginView.loginBehavior = FBSDKLoginBehavior.SystemAccount
         tableView.tableHeaderView = myLoginView
         tableView.tableHeaderView?.hidden = false
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.tableFooterView?.hidden = true
+        
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            userIsLoggedIn = true
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,9 +68,7 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
             sender?.endRefreshing()
         }
     }
-    
 
-    
     var userIsLoggedIn: Bool = false {
         willSet {
             showYouMustLoginView(!newValue)
@@ -74,48 +76,59 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
     }
     
     //MARK: - FBLoginViewDelegate
-    func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
-        userIsLoggedIn = true
-        refresh()
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        if error == nil && !result.isCancelled {
+            userIsLoggedIn = true
+            refresh()
+        } else {
+            if error == nil {
+                showMessage("Þú þarft að skrá þig inn til að sjá pósta frá Mjölni", withTitle: "Hætt við innskráningu")
+            } else {
+                if let errorDict = error.userInfo as? [String:String] {
+                    if let errorMessageToUser = errorDict[FBSDKErrorLocalizedDescriptionKey] {
+                        if let errorTitleToUser = errorDict[FBSDKErrorLocalizedTitleKey] {
+                            showMessage(errorMessageToUser, withTitle: errorTitleToUser)
+                        }
+                    }
+                }
+            }
+        }
     }
     
-    func loginViewShowingLoggedOutUser(loginView: FBLoginView!) {
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         userIsLoggedIn = false
         datasource.reset()
         tableView.reloadData()
     }
     
-    func loginView(loginView: FBLoginView!, handleError error: NSError!) {
-        handleAuthError(error)
-    }
-    
     //MARK: - Error handling
     
-    func handleAuthError(error: NSError) {
-        var alertText = String()
-        var alertTitle = String()
-        
-        if FBErrorUtility.shouldNotifyUserForError(error) {
-            alertTitle = "Eitthvað vesen"
-            alertText = FBErrorUtility.userMessageForError(error)
-            showMessage(alertText, withTitle: alertTitle)
-        } else {
-            if FBErrorUtility.errorCategoryForError(error) == FBErrorCategory.UserCancelled {
-                alertTitle = "Hætt við innskráningu"
-                alertText = "Þú þarft að skrá þig inn til að sjá pósta frá Mjölni"
-                showMessage(alertText, withTitle: alertTitle)
-            } else if FBErrorUtility.errorCategoryForError(error) == FBErrorCategory.AuthenticationReopenSession {
-                alertTitle = "Session error"
-                alertText = "Your current session is no longer valid. Please log in again."
-                
-                showMessage(alertText, withTitle: alertTitle)
-            } else {
-                alertTitle = "Eitthvað vesen"
-                alertText = "Reyndu aftur"
-                showMessage(alertText, withTitle: alertTitle)
-            }
-        }
-    }
+//    func handleAuthError(error: NSError) {
+//        var alertText = String()
+//        var alertTitle = String()
+//        
+//        if FBErrorUtility.shouldNotifyUserForError(error) {
+//            alertTitle = "Eitthvað vesen"
+//            alertText = FBErrorUtility.userMessageForError(error)
+//            showMessage(alertText, withTitle: alertTitle)
+//        } else {
+//            if FBErrorUtility.errorCategoryForError(error) == FBErrorCategory.UserCancelled {
+//                alertTitle = "Hætt við innskráningu"
+//                alertText = "Þú þarft að skrá þig inn til að sjá pósta frá Mjölni"
+//                showMessage(alertText, withTitle: alertTitle)
+//            } else if FBErrorUtility.errorCategoryForError(error) == FBErrorCategory.AuthenticationReopenSession {
+//                alertTitle = "Session error"
+//                alertText = "Your current session is no longer valid. Please log in again."
+//                
+//                showMessage(alertText, withTitle: alertTitle)
+//            } else {
+//                alertTitle = "Eitthvað vesen"
+//                alertText = "Reyndu aftur"
+//                showMessage(alertText, withTitle: alertTitle)
+//            }
+//        }
+//    }
     
     
     func showMessage(text: String, withTitle: String) {
@@ -125,8 +138,6 @@ class FacebookTVC: UITableViewController, FBLoginViewDelegate {
         
     }
 
-
-    
     lazy var youMustLoginView: UILabel = {
         var youMustLoginView = UILabel()
         youMustLoginView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)

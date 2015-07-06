@@ -45,7 +45,7 @@ class MainCVCDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDeleg
             let l: CGFloat = screenSize.width/9
             let b: CGFloat = screenSize.height/10
             let r: CGFloat = screenSize.width/9
-        
+            
             return UIEdgeInsets(top: t, left: l, bottom: b, right: r)
         }
     }
@@ -70,7 +70,7 @@ class MainCVCDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDeleg
     let sizeForOtherButtons = CGSize(width: 50, height: 40)
     let spacingForTimetableButtons: CGFloat = 5
     
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         switch section {
         case WeekdaySelectSectionNumbers.businessDays:
             if sizeForTimetableButtons == CGSize(width: 100, height: 100) {
@@ -90,7 +90,7 @@ class MainCVCDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDeleg
             return insetForOther
         }
     }
-
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
             var usedHeight: CGFloat = 0
@@ -117,13 +117,12 @@ class MainCVCDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDeleg
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-            return sizeForTimetableButtons
-
+        return sizeForTimetableButtons
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-                return spacingForTimetableButtons
+        return spacingForTimetableButtons
     }
-
-	
+    
+    
 }
