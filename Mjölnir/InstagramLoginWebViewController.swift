@@ -27,12 +27,12 @@ class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         var URLString = request.URL!.absoluteString
         
-        if URLString!.hasPrefix(InstagramEngine.sharedEngine().appRedirectURL) {
+        if URLString.hasPrefix(InstagramEngine.sharedEngine().appRedirectURL) {
             
             var delimeter = "access_token="
-            var components = URLString?.componentsSeparatedByString(delimeter)
-            if components!.count > 1 {
-                let accessToken = components!.last
+            var components = URLString.componentsSeparatedByString(delimeter)
+            if components.count > 1 {
+                let accessToken = components.last
                 
                 NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "MjolnirInstagramAccessToken")
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "MjolnirInstagramAPIAuthenticated")
@@ -42,8 +42,8 @@ class InstagramLoginWebViewController: UIViewController, UIWebViewDelegate
             } else {
                 // User denied access
                 delimeter = "access_denied"
-                components = URLString?.componentsSeparatedByString(delimeter)
-                if components!.count > 0 {
+                components = URLString.componentsSeparatedByString(delimeter)
+                if components.count > 0 {
                     userDenied = true
                     performSegueWithIdentifier(userLoggedInSegueString, sender: self)
                 }

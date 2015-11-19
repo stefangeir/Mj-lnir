@@ -17,7 +17,7 @@ class MainCVCDatasource: NSObject, UICollectionViewDataSource
 
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		
-        return buttons.keys.array.count
+        return buttons.keys.count
 	}
 
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

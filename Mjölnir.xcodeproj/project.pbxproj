@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B66E2DD33FC190CD5FA66D3 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA1E0761632A5803E23D1C4 /* Pods.framework */; };
 		730B0EBD1A9DDF320031D0E5 /* InstagramMediaCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B0EBC1A9DDF320031D0E5 /* InstagramMediaCVC.swift */; };
 		730B0EC11A9DF38B0031D0E5 /* InstagramMediaCVCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B0EC01A9DF38B0031D0E5 /* InstagramMediaCVCommentCell.swift */; };
 		7315C9541AAC8CFC00CC85CA /* InstagramMediaCVImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315C9531AAC8CFC00CC85CA /* InstagramMediaCVImageCell.swift */; };
@@ -52,7 +53,6 @@
 		73F40DAE1A987FC20058B24D /* RSSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40DA01A987FC20058B24D /* RSSTableViewCell.swift */; };
 		73F40DAF1A987FC20058B24D /* RSSWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40DA11A987FC20058B24D /* RSSWebViewController.swift */; };
 		73FB8F701ABAED29004E0AC5 /* InstagramDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB8F6F1ABAED29004E0AC5 /* InstagramDataModel.swift */; };
-		E79D30A9E10E34015202AB0B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C92A426CBB5520845AC4A2A5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		0A7CDE2A38BDB72E57BC5E3B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		0CA1E0761632A5803E23D1C4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		393DC75BB7D59FBBE5898D25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		730B0EBC1A9DDF320031D0E5 /* InstagramMediaCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVC.swift; sourceTree = "<group>"; };
 		730B0EC01A9DF38B0031D0E5 /* InstagramMediaCVCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaCVCommentCell.swift; sourceTree = "<group>"; };
@@ -118,7 +119,6 @@
 		73F40DA11A987FC20058B24D /* RSSWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSWebViewController.swift; sourceTree = "<group>"; };
 		73F40DC21A9883C20058B24D /* Mjolnir-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mjolnir-bridging-header.h"; sourceTree = "<group>"; };
 		73FB8F6F1ABAED29004E0AC5 /* InstagramDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InstagramDataModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		C92A426CBB5520845AC4A2A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E79D30A9E10E34015202AB0B /* libPods.a in Frameworks */,
+				6B66E2DD33FC190CD5FA66D3 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +298,7 @@
 		A855A60E15958975E803D5CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C92A426CBB5520845AC4A2A5 /* libPods.a */,
+				0CA1E0761632A5803E23D1C4 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -315,6 +315,7 @@
 				73F40D6C1A987F490058B24D /* Frameworks */,
 				73F40D6D1A987F490058B24D /* Resources */,
 				147993FE1F2B6D6CF80B62E0 /* Copy Pods Resources */,
+				A61C1B3E4228F8A6A6C28046 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -349,6 +350,8 @@
 		73F40D671A987F490058B24D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Stefán Geir Sigfússon";
 				TargetAttributes = {
@@ -415,6 +418,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A61C1B3E4228F8A6A6C28046 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EF292CD7432F2CBEF385C68F /* Check Pods Manifest.lock */ = {
@@ -591,6 +609,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"~/Documents/FacebookSDK/**",
 				);
 				INFOPLIST_FILE = "Mjölnir/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -608,6 +627,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"~/Documents/FacebookSDK/**",
 				);
 				INFOPLIST_FILE = "Mjölnir/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;

@@ -14,8 +14,6 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIWebView+AFNetworking.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "InstagramKit.h"
 
 #endif
