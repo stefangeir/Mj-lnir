@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Stefán Geir Sigfússon. All rights reserved.
 //
 
+import InstagramKit
 import UIKit
 
 struct InstagramNetworking {

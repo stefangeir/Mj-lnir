@@ -51,6 +51,7 @@ PODS:
     - MWFeedParser/NSString+HTML
   - MWFeedParser/NSDate+InternetDateTime (1.0.1)
   - MWFeedParser/NSString+HTML (1.0.1)
+  - SwiftyJSON (2.3.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - InstagramKit
   - MWFeedParser
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
@@ -70,5 +72,6 @@ SPEC CHECKSUMS:
   FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
   InstagramKit: 32fe78c44f41701825ac567343fb2b682c6e3d02
   MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
 
 COCOAPODS: 0.39.0

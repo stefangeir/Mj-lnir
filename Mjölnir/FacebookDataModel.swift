@@ -6,10 +6,11 @@
 //  Copyright (c) 2015 Stefán Geir Sigfússon. All rights reserved.
 //
 
-import UIKit
 import FBSDKCoreKit
 import FBSDKShareKit
 import FBSDKLoginKit
+import SwiftyJSON
+import UIKit
 
 
 struct FacebookNetworking {

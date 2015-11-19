@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Stefán Geir. All rights reserved.
 //
 
+import MWFeedParser
 import UIKit
 
 class RSSTableViewCell: UITableViewCell
