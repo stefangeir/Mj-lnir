@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Stefán Geir Sigfússon. All rights reserved.
 //
 
+import AFNetworking
+import MWFeedParser
 import UIKit
 
 //struct FbPost {

@@ -21,7 +21,7 @@ class MainCVCell: UICollectionViewCell {
     func updateUI() {
         if let text = text {
             selectedBackgroundView = UIView(frame: bounds)
-            selectedBackgroundView.backgroundColor = UIColor.redColor()
+            selectedBackgroundView!.backgroundColor = UIColor.redColor()
             buttonLabel?.text = text
             layer.cornerRadius = frame.size.height/2
             layer.borderColor = UIColor.redColor().CGColor

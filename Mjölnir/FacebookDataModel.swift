@@ -6,7 +6,12 @@
 //  Copyright (c) 2015 Stefán Geir Sigfússon. All rights reserved.
 //
 
+import FBSDKCoreKit
+import FBSDKShareKit
+import FBSDKLoginKit
+import SwiftyJSON
 import UIKit
+
 
 struct FacebookNetworking {
     static let FetchedDataNotification = "FacebookDataModel successfully fetched data"
@@ -39,7 +44,7 @@ class FacebookDataModel: NSObject
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        var request = FBSDKGraphRequest(graphPath: requestPath, parameters: nil)
+        let request = FBSDKGraphRequest(graphPath: requestPath, parameters: nil)
         
         currentRequest?.cancel()
         currentRequest = FBSDKGraphRequestConnection()

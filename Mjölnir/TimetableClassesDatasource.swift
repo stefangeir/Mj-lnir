@@ -27,9 +27,9 @@ class TimetableClassesDatasource: NSObject, UITableViewDataSource
             2: data.getClassesForWeekday(selectedWeekday!, inRoom: 2),
             3: data.getClassesForWeekday(selectedWeekday!, inRoom: 3)]
         
-        timesForRoom = [1:[String](classesForRoom[1]!.keys).sorted(<),
-            2:[String](classesForRoom[2]!.keys).sorted(<),
-            3:[String](classesForRoom[3]!.keys).sorted(<)]
+        timesForRoom = [1:[String](classesForRoom[1]!.keys).sort(<),
+            2:[String](classesForRoom[2]!.keys).sort(<),
+            3:[String](classesForRoom[3]!.keys).sort(<)]
         
         controller.tableView.reloadData()
 	}

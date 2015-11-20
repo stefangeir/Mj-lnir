@@ -6,6 +6,7 @@
 //
 //
 
+import InstagramKit
 import UIKit
 import MediaPlayer
 

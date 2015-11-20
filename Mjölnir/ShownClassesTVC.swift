@@ -23,7 +23,7 @@ class ShownClassesTVC: UITableViewController {
         
         title = "Velja sýnda tíma"
         allClasses = model.getAllClasses()
-        allClasses.sort(<)
+        allClasses.sortInPlace(<)
         
         if let dict = NSUserDefaults.standardUserDefaults().dictionaryForKey(keyForShownClassesDictionaryString) as? [String:Bool] {
             updatedShownClasses = dict

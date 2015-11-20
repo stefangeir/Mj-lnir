@@ -20,23 +20,26 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Bolts (1.1.4)
-  - Facebook-iOS-SDK (4.0):
-    - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit (= 4.0)
-    - Facebook-iOS-SDK/LoginKit (= 4.0)
-    - Facebook-iOS-SDK/ShareKit (= 4.0)
-  - Facebook-iOS-SDK/CoreKit (4.0):
-    - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit/no-arc (= 4.0)
-  - Facebook-iOS-SDK/CoreKit/no-arc (4.0):
-    - Bolts (~> 1.0)
-  - Facebook-iOS-SDK/LoginKit (4.0):
-    - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit
-  - Facebook-iOS-SDK/ShareKit (4.0):
-    - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit
+  - Alamofire (3.1.2)
+  - Bolts (1.5.0):
+    - Bolts/AppLinks (= 1.5.0)
+    - Bolts/Tasks (= 1.5.0)
+  - Bolts/AppLinks (1.5.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.5.0)
+  - FBSDKCoreKit (4.8.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc (= 4.8.0)
+    - FBSDKCoreKit/no-arc (= 4.8.0)
+  - FBSDKCoreKit/arc (4.8.0):
+    - Bolts (~> 1.1)
+  - FBSDKCoreKit/no-arc (4.8.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc
+  - FBSDKLoginKit (4.8.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.8.0):
+    - FBSDKCoreKit
   - InstagramKit (3.5.0):
     - AFNetworking (~> 2.0)
   - MWFeedParser (1.0.1):
@@ -48,18 +51,27 @@ PODS:
     - MWFeedParser/NSString+HTML
   - MWFeedParser/NSDate+InternetDateTime (1.0.1)
   - MWFeedParser/NSString+HTML (1.0.1)
+  - SwiftyJSON (2.3.1)
 
 DEPENDENCIES:
   - AFNetworking
-  - Facebook-iOS-SDK
+  - Alamofire
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - InstagramKit
   - MWFeedParser
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
-  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
-  Facebook-iOS-SDK: 523ee69fdd3c37cdca6578c79912f47943035806
+  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
+  FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
+  FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
   InstagramKit: 32fe78c44f41701825ac567343fb2b682c6e3d02
   MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.39.0

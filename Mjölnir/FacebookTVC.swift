@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKShareKit
+import FBSDKLoginKit
 
 let openInFacebookAppUserDefaultsString = "MjolnirOpenFacebookPostsInFacebookApp"
 
