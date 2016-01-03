@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -12,8 +12,8 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="487"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" image="mjolnir_logo_full" translatesAutoresizingMaskIntoConstraints="NO" id="UiD-6Q-IUf">
-                    <rect key="frame" x="0.0" y="20" width="480" height="260"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="mjolnir_logo_full" translatesAutoresizingMaskIntoConstraints="NO" id="UiD-6Q-IUf">
+                    <rect key="frame" x="0.0" y="20" width="480" height="259"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="239" id="5YK-PJ-O4j"/>
                     </constraints>
@@ -23,8 +23,8 @@
                         </mask>
                     </variation>
                 </imageView>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQ5-x8-BIj">
-                    <rect key="frame" x="0.0" y="288" width="480" height="200"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ5-x8-BIj">
+                    <rect key="frame" x="0.0" y="287" width="480" height="200"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
