@@ -52,6 +52,7 @@
 		73F40DAE1A987FC20058B24D /* RSSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40DA01A987FC20058B24D /* RSSTableViewCell.swift */; };
 		73F40DAF1A987FC20058B24D /* RSSWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40DA11A987FC20058B24D /* RSSWebViewController.swift */; };
 		73FB8F701ABAED29004E0AC5 /* InstagramDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB8F6F1ABAED29004E0AC5 /* InstagramDataModel.swift */; };
+		AEC821A01C39E264009500B7 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = AEC8219F1C39E264009500B7 /* timetable.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		73F40DA11A987FC20058B24D /* RSSWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSWebViewController.swift; sourceTree = "<group>"; };
 		73F40DC21A9883C20058B24D /* Mjolnir-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mjolnir-bridging-header.h"; sourceTree = "<group>"; };
 		73FB8F6F1ABAED29004E0AC5 /* InstagramDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InstagramDataModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		AEC8219F1C39E264009500B7 /* timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 		73F40D721A987F490058B24D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AEC8219F1C39E264009500B7 /* timetable.json */,
 				73F40D741A987F490058B24D /* AppDelegate.swift */,
 				73F40DC21A9883C20058B24D /* Mjolnir-bridging-header.h */,
 				73F40D7B1A987F490058B24D /* Images.xcassets */,
@@ -387,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				731A9B821A9887900038A2B7 /* LaunchScreen.xib in Resources */,
+				AEC821A01C39E264009500B7 /* timetable.json in Resources */,
 				73F40D7C1A987F490058B24D /* Images.xcassets in Resources */,
 				73974B841AA654DF0087F2A5 /* Main.storyboard in Resources */,
 			);

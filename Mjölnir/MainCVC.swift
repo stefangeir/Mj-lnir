@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Stefán Geir Sigfússon. All rights reserved.
 //
 
+import SwiftyJSON
+import Alamofire
 import UIKit
 
 
@@ -52,8 +54,28 @@ class MainCVC: UICollectionViewController {
         return (intToLongWeekdayDict, intToShortWeekdayDict, shortWeekdays)
     }
     
+    let timetableURL = "https://raw.githubusercontent.com/trauzti/mjolnir-timetable/master/timetable.json"
+    
+    func downloadTimetable() {
+        Alamofire.request(.GET, timetableURL).validate().responseJSON { [weak self] response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    TimetableDataModel.timetableResponse = JSON(value)
+                }
+            case .Failure(let error):
+                let path = NSBundle.mainBundle().pathForResource("timetable", ofType: "json")
+                let jsonData = NSData(contentsOfFile:path!)
+                let json = JSON(data: jsonData!)
+                TimetableDataModel.timetableResponse = json
+                print(error)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        downloadTimetable()
         tabBarController?.tabBar.tintColor = UIColor.redColor()
         
         // Búum til intToWeekday dictionaryið og weekdays array
